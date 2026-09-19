@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daftar Pengaduan</title>
+
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <div class="header">
+
+            <div class="header-top">
+
+                <div class="header-title">
+
+                    <h1>
+                        Daftar Pengaduan
+                    </h1>
+
+                    <p>
+                        Daftar laporan pengaduan yang telah dibuat
+                    </p>
+
+                </div>
+
+
+                <!-- TOMBOL TAMBAH -->
+
+                <a
+                    href="Tambah.html"
+                    class="btn-tambah"
+                >
+                    <span class="plus">+</span>
+                    <span>Tambah</span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             DAFTAR PENGADUAN
+        ========================== -->
+
+        <div
+            class="pengaduan-list"
+            id="pengaduan-list"
+        >
+
+            <!-- Loading -->
+
+            <div class="tidak-ada-data">
+                Memuat pengaduan...
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FIREBASE
+    ========================== -->
+
+    <script type="module">
+
+        import { db } from "../js/firebase-config.js";
+
+        import {
+            collection,
+            onSnapshot
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+        // =========================
+        // ELEMENT
+        // =========================
+
+        const daftarPengaduan =
+            document.getElementById("pengaduan-list");
+
+
+        // =========================
+        // COLLECTION FIRESTORE
+        // =========================
+
+        const pengaduanRef =
+            collection(db, "pengaduan");
+
+
+        // =========================
+        // FUNGSI ESCAPE HTML
+        // =========================
+
+        function escapeHTML(value) {
+
+            if (value === null || value === undefined) {
+                return "";
+            }
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        // =========================
+        // FORMAT TANGGAL
+        // =========================
+
+        function formatTanggal(timestamp) {
+
+            if (!timestamp) {
+                return "Tanggal belum tersedia";
+            }
+
+            try {
+
+                return timestamp
+                    .toDate()
+                    .toLocaleDateString(
+                        "id-ID",
+                        {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric"
+                        }
+                    );
+
+            } catch (error) {
+
+                console.error(
+                    "Gagal memformat tanggal:",
+                    error
+                );
+
+                return "Tanggal tidak valid";
+            }
+        }
+
+
+        // =========================
+        // CLASS KATEGORI
+        // =========================
+
+        function getClassKategori(jenisLaporan) {
+
+            switch (jenisLaporan) {
+
+                case "Pencurian":
+                    return "pencurian";
+
+                case "Kerusakan Fasilitas":
+                    return "kerusakan";
+
+                case "Orang Tidak Dikenal":
+                    return "asing";
+
+                default:
+                    return "";
+            }
+        }
+
+
+        // =========================
+        // TAMPILKAN DATA
+        // =========================
+
+        onSnapshot(
+
+            pengaduanRef,
+
+            (snapshot) => {
+
+                console.log(
+                    "Jumlah pengaduan:",
+                    snapshot.size
+                );
+
+
+                // Bersihkan loading / data lama
+
+                daftarPengaduan.innerHTML = "";
+
+
+                // =========================
+                // BELUM ADA DATA
+                // =========================
+
+                if (snapshot.empty) {
+
+                    daftarPengaduan.innerHTML = `
+                        <div class="tidak-ada-data">
+                            Belum ada pengaduan.
+                        </div>
+                    `;
+
+                    return;
+                }
+
+
+                // =========================
+                // TAMPILKAN SETIAP DOCUMENT
+                // =========================
+
+                snapshot.forEach((docSnapshot) => {
+
+                    const data =
+                        docSnapshot.data();
+
+                    const id =
+                        docSnapshot.id;
+
+
+                    // Data
+
+                    const namaPelapor =
+                        escapeHTML(
+                            data.namaPelapor || "-"
+                        );
+
+                    const nomorRumah =
+                        escapeHTML(
+                            data.nomorRumah || "-"
+                        );
+
+                    const flat =
+                        escapeHTML(
+                            data.flat || "-"
+                        );
+
+                    const judulLaporan =
+                        escapeHTML(
+                            data.judulLaporan || "-"
+                        );
+
+                    const jenisLaporan =
+                        escapeHTML(
+                            data.jenisLaporan || "-"
+                        );
+
+                    const deskripsi =
+                        escapeHTML(
+                            data.deskripsi || "-"
+                        );
+
+
+                    // Status
+
+                    const status =
+                        escapeHTML(
+                            data.status || "Menunggu"
+                        );
+
+
+                    // Tanggal
+
+                    const tanggal =
+                        formatTanggal(
+                            data.createdAt || data.tanggal
+                        );
+
+
+                    // Class kategori
+
+                    const classKategori =
+                        getClassKategori(
+                            data.jenisLaporan
+                        );
+
+
+                    // Foto
+
+                    const foto =
+                        data.fotoUrl ||
+                        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800";
+
+
+                    // =========================
+                    // BUAT CARD
+                    // =========================
+
+                    const card =
+                        document.createElement("div");
+
+                    card.className =
+                        "pengaduan-card";
+
+
+                    card.innerHTML = `
+
+                        <div class="pengaduan-image">
+
+                            <img
+                                src="${escapeHTML(foto)}"
+                                alt="${jenisLaporan}"
+                                loading="lazy"
+                            >
+
+                        </div>
+
+
+                        <div class="pengaduan-content">
+
+                            <div class="pengaduan-top">
+
+                                <span
+                                    class="kategori ${classKategori}"
+                                >
+                                    ${jenisLaporan}
+                                </span>
+
+
+                                <span class="tanggal">
+                                    ${tanggal}
+                                </span>
+
+                            </div>
+
+
+                            <h2>
+                                ${judulLaporan}
+                            </h2>
+
+
+                            <p>
+                                ${deskripsi}
+                            </p>
+
+
+                            <div class="pengaduan-info">
+
+                                <span>
+                                    Rumah ${nomorRumah}
+                                </span>
+
+                                <span>
+                                    Flat ${flat}
+                                </span>
+
+                                <span>
+                                    ${status}
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="detail.html?id=${encodeURIComponent(id)}"
+                                class="btn-detail"
+                            >
+                                Lihat Detail
+                            </a>
+
+                        </div>
+
+                    `;
+
+
+                    daftarPengaduan.appendChild(card);
+
+                });
+
+            },
+
+
+            // =========================
+            // ERROR FIRESTORE
+            // =========================
+
+            (error) => {
+
+                console.error(
+                    "Gagal mengambil data Firestore:",
+                    error
+                );
+
+
+                daftarPengaduan.innerHTML = `
+
+                    <div class="tidak-ada-data">
+
+                        Gagal mengambil data pengaduan.
+
+                        <br><br>
+
+                        <small>
+                            ${escapeHTML(error.message)}
+                        </small>
+
+                    </div>
+
+                `;
+
+            }
+
+        );
+
+    </script>
+
+</body>
+
+</html>

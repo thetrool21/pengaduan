@@ -1,0 +1,561 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #ffffff;
+    color: #173c5b;
+}
+
+
+/* =========================
+   CONTAINER UTAMA
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+    padding: 24px 14px;
+}
+
+
+/* =========================
+   FOTO PENGADUAN
+========================= */
+
+.foto-container {
+    width: 145px;
+    height: 96px;
+
+    margin: 0 auto 15px;
+
+    overflow: hidden;
+    border-radius: 7px;
+}
+
+.foto-container img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   CARD PENGADUAN
+========================= */
+
+.card {
+    position: relative;
+
+    width: 100%;
+
+    padding: 45px 14px 18px;
+
+    background: #eef1f5;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   TANGGAL
+========================= */
+
+.tanggal {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    color: #c85c67;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   FORM CONTROL
+========================= */
+
+.form-control {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+/* =========================
+   LABEL
+========================= */
+
+.form-group label {
+    color: #38566e;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.form-group input {
+    width: 100%;
+    height: 38px;
+
+    padding: 8px 11px;
+
+    border: 1px solid #b8c5d0;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+    color: #173c5b;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================
+   INPUT PLACEHOLDER
+========================= */
+
+.form-group input::placeholder {
+    color: #9aa8b3;
+}
+
+
+/* =========================
+   INPUT FOCUS
+========================= */
+
+.form-group input:focus {
+    border-color: #073b63;
+
+    box-shadow: 0 0 0 3px rgba(7, 59, 99, 0.10);
+}
+
+
+/* =========================
+   REMOVE NUMBER ARROW
+========================= */
+
+.form-group input[type="number"]::-webkit-inner-spin-button,
+.form-group input[type="number"]::-webkit-outer-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
+}
+
+.form-group input[type="number"] {
+    appearance: textfield;
+}
+
+
+/* =========================
+   DESKRIPSI SECTION
+========================= */
+
+.section {
+    width: 100%;
+
+    margin-top: 16px;
+}
+
+
+/* =========================
+   JUDUL SECTION
+========================= */
+
+.section-title {
+    margin-bottom: 6px;
+
+    color: #173c5b;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.textarea {
+    width: 100%;
+}
+
+.textarea textarea {
+    width: 100%;
+    min-height: 95px;
+
+    padding: 10px 11px;
+
+    border: 1px solid #b8c5d0;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+    color: #173c5b;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 16px;
+
+    resize: vertical;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================
+   TEXTAREA PLACEHOLDER
+========================= */
+
+.textarea textarea::placeholder {
+    color: #9aa8b3;
+}
+
+
+/* =========================
+   TEXTAREA FOCUS
+========================= */
+
+.textarea textarea:focus {
+    border-color: #073b63;
+
+    box-shadow: 0 0 0 3px rgba(7, 59, 99, 0.10);
+}
+
+
+/* =========================
+   BUTTON SIMPAN
+========================= */
+
+.btn-simpan {
+    width: 94%;
+    height: 42px;
+
+    display: block;
+
+    margin: 20px auto 0;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #073b63;
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* =========================
+   BUTTON HOVER
+========================= */
+
+.btn-simpan:hover {
+    background: #0a4d80;
+}
+
+
+/* =========================
+   BUTTON ACTIVE
+========================= */
+
+.btn-simpan:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 600px) {
+
+    .container {
+        max-width: 550px;
+
+        padding: 35px 20px;
+    }
+
+
+    /* FOTO */
+
+    .foto-container {
+        width: 180px;
+        height: 120px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* CARD */
+
+    .card {
+        padding: 50px 20px 20px;
+
+        border-radius: 11px;
+    }
+
+
+    /* TANGGAL */
+
+    .tanggal {
+        top: 16px;
+        right: 20px;
+
+        font-size: 13px;
+    }
+
+
+    /* FORM */
+
+    .form-control {
+        gap: 15px;
+    }
+
+    .form-group {
+        gap: 7px;
+    }
+
+
+    /* LABEL */
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+
+    /* INPUT */
+
+    .form-group input {
+        height: 42px;
+
+        padding: 9px 12px;
+
+        font-size: 13px;
+    }
+
+
+    /* SECTION */
+
+    .section {
+        margin-top: 18px;
+    }
+
+    .section-title {
+        margin-bottom: 7px;
+
+        font-size: 13px;
+    }
+
+
+    /* TEXTAREA */
+
+    .textarea textarea {
+        min-height: 105px;
+
+        padding: 11px 12px;
+
+        font-size: 13px;
+        line-height: 19px;
+    }
+
+
+    /* BUTTON */
+
+    .btn-simpan {
+        width: 95%;
+        height: 44px;
+
+        font-size: 16px;
+    }
+}
+
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 900px) {
+
+    body {
+        background: #f3f5f7;
+    }
+
+
+    /* CONTAINER */
+
+    .container {
+        max-width: 600px;
+
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+
+    /* FOTO */
+
+    .foto-container {
+        width: 210px;
+        height: 140px;
+
+        margin-bottom: 20px;
+    }
+
+
+    /* CARD */
+
+    .card {
+        padding: 55px 25px 25px;
+
+        border-radius: 12px;
+
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* TANGGAL */
+
+    .tanggal {
+        top: 18px;
+        right: 25px;
+
+        font-size: 14px;
+    }
+
+
+    /* FORM */
+
+    .form-control {
+        gap: 17px;
+    }
+
+    .form-group {
+        gap: 8px;
+    }
+
+
+    /* LABEL */
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+
+    /* INPUT */
+
+    .form-group input {
+        height: 44px;
+
+        padding: 10px 13px;
+
+        font-size: 14px;
+    }
+
+
+    /* SECTION */
+
+    .section {
+        margin-top: 20px;
+    }
+
+    .section-title {
+        margin-bottom: 8px;
+
+        font-size: 14px;
+    }
+
+
+    /* TEXTAREA */
+
+    .textarea textarea {
+        min-height: 115px;
+
+        padding: 12px 13px;
+
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+
+    /* BUTTON */
+.btn-simpan {
+    width: 95%;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 20px auto 0;
+
+    text-align: center;
+
+    font-size: 18px;
+}
+}

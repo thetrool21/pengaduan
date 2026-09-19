@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detail Pengaduan</title>
+
+    <link rel="stylesheet" href="../css/Tambah.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- FOTO PENGADUAN -->
+        <div class="foto-container">
+            <img 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO5ZsdcHzHpnyDjvWvqzGWSOkQyJrextqO1anoaSqg57iLEnkxY1HvcClZ&s=10"
+                alt="Foto maling motor"
+            >
+        </div>
+
+
+        <!-- KARTU PENGADUAN -->
+        <div class="card">
+
+            <!-- TANGGAL -->
+            <div class="tanggal">
+                12 November 2026
+            </div>
+
+
+<!-- DATA PENGADUAN -->
+<div class="form-control">
+
+    <!-- NAMA PELAPOR -->
+    <div class="form-group">
+        <label for="nama_pelapor">Nama Pelapor</label>
+        <input
+            type="text"
+            id="nama_pelapor"
+            name="nama_pelapor"
+            placeholder="Masukkan nama pelapor"
+        >
+    </div>
+
+    <!-- NOMOR RUMAH -->
+    <div class="form-group">
+        <label for="nomor">No. Rumah</label>
+        <input
+            type="number"
+            id="nomor"
+            name="nomor"
+            placeholder="Masukkan nomor rumah"
+        >
+    </div>
+
+    <!-- FLAT -->
+    <div class="form-group">
+        <label for="flat">Flat</label>
+        <input
+            type="text"
+            id="flat"
+            name="flat"
+            placeholder="Masukkan nama / nomor flat"
+        >
+    </div>
+
+    <!-- JUDUL LAPORAN -->
+    <div class="form-group">
+        <label for="judul_laporan">Judul Laporan</label>
+        <input
+            type="text"
+            id="judul_laporan"
+            name="judul_laporan"
+            placeholder="Masukkan judul laporan"
+        >
+    </div>
+    <!-- JENIS LAPORAN -->
+    <div class="form-group">
+        <label for="jenis_laporan">Jenis Laporan</label>
+        <select id="jenis_laporan" name="jenis_laporan">
+            <option value="">Pilih Jenis Laporan</option>
+            <option value="Pencurian">Pencurian</option>
+            <option value="Kerusakan Fasilitas">Kerusakan Fasilitas</option>
+            <option value="Orang Tidak Dikenal">Orang Tidak Dikenal</option>
+        </select>
+    </div>
+</div>
+
+
+
+            <!-- DESKRIPSI -->
+            <div class="section">
+
+                <div class="section-title">
+                    Deskripsi Pengaduan
+                </div>
+
+                <div class="textarea">
+                    <textarea
+                        name="deskripsi"
+                        rows="4"
+                        placeholder="Masukkan deskripsi pengaduan..."
+                    ></textarea>
+                </div>
+
+            </div>
+
+
+            <!-- a SIMPAN -->
+            <button type="button" class="btn-simpan" id="btn-simpan">
+                Simpan
+            </button>
+
+        </div>
+
+    </div>
+    <script src="../js/switch.js"></script>
+    <script type="module">
+
+    import { db } from "../js/firebase-config.js";
+
+    import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+    // =========================
+    // TOMBOL SIMPAN
+    // =========================
+
+    const tombolSimpan = document.getElementById("btn-simpan");
+
+
+    tombolSimpan.addEventListener("click", async () => {
+
+        // Ambil data dari input
+
+        const namaPelapor =
+            document.getElementById("nama_pelapor").value.trim();
+
+        const nomorRumah =
+            document.getElementById("nomor").value.trim();
+
+        const flat =
+            document.getElementById("flat").value.trim();
+
+        const judulLaporan =
+            document.getElementById("judul_laporan").value.trim();
+
+        const jenisLaporan =
+            document.getElementById("jenis_laporan").value;
+
+        const deskripsi =
+            document.querySelector("textarea[name='deskripsi']").value.trim();
+
+
+        // =========================
+        // VALIDASI
+        // =========================
+
+        if (
+            !namaPelapor ||
+            !nomorRumah ||
+            !flat ||
+            !judulLaporan ||
+            !jenisLaporan ||
+            !deskripsi
+        ) {
+
+            alert("Mohon lengkapi semua data terlebih dahulu.");
+
+            return;
+        }
+
+
+        // =========================
+        // SIMPAN KE FIRESTORE
+        // =========================
+
+        try {
+
+            tombolSimpan.disabled = true;
+
+            tombolSimpan.textContent = "Menyimpan...";
+
+
+            const docRef = await addDoc(
+                collection(db, "pengaduan"),
+                {
+
+                    namaPelapor: namaPelapor,
+
+                    nomorRumah: nomorRumah,
+
+                    flat: flat,
+
+                    judulLaporan: judulLaporan,
+
+                    jenisLaporan: jenisLaporan,
+
+                    deskripsi: deskripsi,
+
+                    status: "Menunggu",
+
+                    tanggal: serverTimestamp(),
+
+                    createdAt: serverTimestamp()
+
+                }
+            );
+
+
+            // =========================
+            // BERHASIL
+            // =========================
+
+            console.log(
+                "Pengaduan berhasil disimpan!",
+                docRef.id
+            );
+
+
+            alert("Pengaduan berhasil dikirim!");
+
+
+            // Pindah halaman setelah berhasil
+
+            window.location.href = `detail.html?id=${docRef.id}`;
+
+
+        } catch (error) {
+
+            // =========================
+            // ERROR
+            // =========================
+
+            console.error(
+                "Gagal menyimpan pengaduan:",
+                error
+            );
+
+            alert(
+                "Gagal mengirim pengaduan.\n\n" +
+                error.message
+            );
+
+
+            tombolSimpan.disabled = false;
+
+            tombolSimpan.textContent = "Simpan";
+
+        }
+
+    });
+
+</script>
+</body>
+
+</html>

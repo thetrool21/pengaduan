@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detail Pengaduan</title>
+
+    <link rel="stylesheet" href="../css/detail.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <div class="detail-header">
+
+            <a href="index.html" class="btn-kembali">
+                ← Kembali
+            </a>
+
+            <h1>
+                Detail Pengaduan
+            </h1>
+
+            <p>
+                Informasi lengkap mengenai laporan pengaduan
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             FOTO PENGADUAN
+        ========================== -->
+
+        <div class="detail-image">
+
+            <img
+                id="foto-pengaduan"
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800"
+                alt="Foto pengaduan"
+            >
+
+        </div>
+
+
+        <!-- =========================
+             CARD DETAIL
+        ========================== -->
+
+        <div class="detail-card">
+
+
+            <!-- KATEGORI & STATUS -->
+
+            <div class="detail-top">
+
+                <span
+                    id="kategori"
+                    class="kategori"
+                >
+                    Memuat...
+                </span>
+
+
+                <span
+                    id="status"
+                    class="status"
+                >
+                    Memuat...
+                </span>
+
+            </div>
+
+
+            <!-- JUDUL -->
+
+            <h2
+                id="detail-title"
+                class="detail-title"
+            >
+                Memuat pengaduan...
+            </h2>
+
+
+            <!-- TANGGAL -->
+
+            <div
+                id="detail-date"
+                class="detail-date"
+            >
+                Memuat tanggal...
+            </div>
+
+
+            <!-- =========================
+                 INFORMASI PELAPOR
+            ========================== -->
+
+            <div class="detail-section">
+
+                <h3>
+                    Informasi Pelapor
+                </h3>
+
+
+                <div class="info-list">
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Nama Pelapor
+                        </span>
+
+                        <span
+                            id="nama-pelapor"
+                            class="info-value"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            No. Rumah
+                        </span>
+
+                        <span
+                            id="nomor-rumah"
+                            class="info-value"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Flat
+                        </span>
+
+                        <span
+                            id="flat"
+                            class="info-value"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 INFORMASI LAPORAN
+            ========================== -->
+
+            <div class="detail-section">
+
+                <h3>
+                    Informasi Laporan
+                </h3>
+
+
+                <div class="info-list">
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Kategori
+                        </span>
+
+                        <span
+                            id="kategori-laporan"
+                            class="info-value"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Lokasi Kejadian
+                        </span>
+
+                        <span
+                            id="lokasi"
+                            class="info-value"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span class="info-label">
+                            Waktu Kejadian
+                        </span>
+
+                        <span
+                            id="waktu-kejadian"
+                            class="info-value"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 KRONOLOGI
+            ========================== -->
+
+            <div class="detail-section">
+
+                <h3>
+                    Kronologi / Deskripsi
+                </h3>
+
+
+                <div
+                    id="deskripsi"
+                    class="deskripsi-box"
+                >
+                    Memuat deskripsi...
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 TINDAKAN PETUGAS
+            ========================== -->
+
+            <div class="detail-section">
+
+                <h3>
+                    Tindakan Petugas
+                </h3>
+
+
+                <div
+                    id="tindakan"
+                    class="tindakan-box"
+                >
+                    Belum ada tindakan petugas.
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 FOOTER DETAIL
+            ========================== -->
+
+            <div class="detail-footer">
+
+                <span id="id-pengaduan">
+                    ID Pengaduan: -
+                </span>
+
+                <span id="terakhir-diperbarui">
+                    Terakhir diperbarui: -
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FIREBASE
+    ========================== -->
+
+    <script type="module">
+
+        import { db } from "../js/firebase-config.js";
+
+        import {
+            doc,
+            getDoc
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+        // ==================================
+        // AMBIL ID DARI URL
+        // ==================================
+
+        const urlParams =
+            new URLSearchParams(window.location.search);
+
+        const pengaduanId =
+            urlParams.get("id");
+
+
+        // ==================================
+        // ELEMENT HTML
+        // ==================================
+
+        const fotoPengaduan =
+            document.getElementById("foto-pengaduan");
+
+        const kategori =
+            document.getElementById("kategori");
+
+        const status =
+            document.getElementById("status");
+
+        const detailTitle =
+            document.getElementById("detail-title");
+
+        const detailDate =
+            document.getElementById("detail-date");
+
+        const namaPelapor =
+            document.getElementById("nama-pelapor");
+
+        const nomorRumah =
+            document.getElementById("nomor-rumah");
+
+        const flat =
+            document.getElementById("flat");
+
+        const kategoriLaporan =
+            document.getElementById("kategori-laporan");
+
+        const lokasi =
+            document.getElementById("lokasi");
+
+        const waktuKejadian =
+            document.getElementById("waktu-kejadian");
+
+        const deskripsi =
+            document.getElementById("deskripsi");
+
+        const tindakan =
+            document.getElementById("tindakan");
+
+        const idPengaduan =
+            document.getElementById("id-pengaduan");
+
+        const terakhirDiperbarui =
+            document.getElementById("terakhir-diperbarui");
+
+
+        // ==================================
+        // CEK ID
+        // ==================================
+
+        if (!pengaduanId) {
+
+            tampilkanError(
+                "ID pengaduan tidak ditemukan."
+            );
+
+        } else {
+
+            ambilPengaduan(pengaduanId);
+
+        }
+
+
+        // ==================================
+        // AMBIL DATA FIRESTORE
+        // ==================================
+
+        async function ambilPengaduan(id) {
+
+            try {
+
+                const pengaduanRef =
+                    doc(db, "pengaduan", id);
+
+
+                const snapshot =
+                    await getDoc(pengaduanRef);
+
+
+                // ==================================
+                // DOKUMEN TIDAK ADA
+                // ==================================
+
+                if (!snapshot.exists()) {
+
+                    tampilkanError(
+                        "Pengaduan tidak ditemukan."
+                    );
+
+                    return;
+                }
+
+
+                // ==================================
+                // AMBIL DATA
+                // ==================================
+
+                const data =
+                    snapshot.data();
+
+
+                console.log(
+                    "Data pengaduan:",
+                    data
+                );
+
+
+                tampilkanData(
+                    data,
+                    id
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Gagal mengambil pengaduan:",
+                    error
+                );
+
+
+                tampilkanError(
+                    "Gagal mengambil data pengaduan."
+                );
+
+            }
+
+        }
+
+
+        // ==================================
+        // TAMPILKAN DATA
+        // ==================================
+
+        function tampilkanData(
+            data,
+            id
+        ) {
+
+
+            // -------------------------------
+            // FOTO
+            // -------------------------------
+
+            if (data.fotoUrl) {
+
+                fotoPengaduan.src =
+                    data.fotoUrl;
+
+            }
+
+
+            // -------------------------------
+            // KATEGORI
+            // -------------------------------
+
+            const jenis =
+                data.jenisLaporan || "-";
+
+
+            kategori.textContent =
+                jenis;
+
+
+            kategoriLaporan.textContent =
+                jenis;
+
+
+            // Class kategori
+
+            kategori.className =
+                "kategori";
+
+
+            if (jenis === "Pencurian") {
+
+                kategori.classList.add(
+                    "pencurian"
+                );
+
+            }
+
+            else if (
+                jenis === "Kerusakan Fasilitas"
+            ) {
+
+                kategori.classList.add(
+                    "kerusakan"
+                );
+
+            }
+
+            else if (
+                jenis === "Orang Tidak Dikenal"
+            ) {
+
+                kategori.classList.add(
+                    "asing"
+                );
+
+            }
+
+
+            // -------------------------------
+            // STATUS
+            // -------------------------------
+
+            const statusData =
+                data.status || "Menunggu";
+
+
+            status.textContent =
+                statusData;
+
+
+            status.className =
+                "status";
+
+
+            if (
+                statusData === "Menunggu"
+            ) {
+
+                status.classList.add(
+                    "menunggu"
+                );
+
+            }
+
+            else if (
+                statusData === "Sedang Diproses"
+            ) {
+
+                status.classList.add(
+                    "diproses"
+                );
+
+            }
+
+            else if (
+                statusData === "Selesai"
+            ) {
+
+                status.classList.add(
+                    "selesai"
+                );
+
+            }
+
+            else if (
+                statusData === "Ditolak"
+            ) {
+
+                status.classList.add(
+                    "ditolak"
+                );
+
+            }
+
+
+            // -------------------------------
+            // JUDUL
+            // -------------------------------
+
+            detailTitle.textContent =
+                data.judulLaporan || "-";
+
+
+            // -------------------------------
+            // NAMA PELAPOR
+            // -------------------------------
+
+            namaPelapor.textContent =
+                data.namaPelapor || "-";
+
+
+            // -------------------------------
+            // NOMOR RUMAH
+            // -------------------------------
+
+            nomorRumah.textContent =
+                data.nomorRumah || "-";
+
+
+            // -------------------------------
+            // FLAT
+            // -------------------------------
+
+            flat.textContent =
+                data.flat || "-";
+
+
+            // -------------------------------
+            // LOKASI
+            // -------------------------------
+
+            lokasi.textContent =
+                data.lokasi || "-";
+
+
+            // -------------------------------
+            // WAKTU
+            // -------------------------------
+
+            waktuKejadian.textContent =
+                data.waktuKejadian || "-";
+
+
+            // -------------------------------
+            // DESKRIPSI
+            // -------------------------------
+
+            deskripsi.textContent =
+                data.deskripsi || "-";
+
+
+            // -------------------------------
+            // TINDAKAN PETUGAS
+            // -------------------------------
+
+            tindakan.textContent =
+                data.tindakanPetugas ||
+                "Belum ada tindakan petugas.";
+
+
+            // -------------------------------
+            // TANGGAL
+            // -------------------------------
+
+            const tanggal =
+                formatTanggal(
+                    data.createdAt ||
+                    data.tanggal
+                );
+
+
+            detailDate.textContent =
+                "Dilaporkan pada " +
+                tanggal;
+
+
+            terakhirDiperbarui.textContent =
+                "Terakhir diperbarui: " +
+                tanggal;
+
+
+            // -------------------------------
+            // ID PENGADUAN
+            // -------------------------------
+
+            idPengaduan.textContent =
+                "ID Pengaduan: " +
+                id;
+
+        }
+
+
+        // ==================================
+        // FORMAT TANGGAL
+        // ==================================
+
+        function formatTanggal(timestamp) {
+
+            if (!timestamp) {
+
+                return "-";
+
+            }
+
+
+            try {
+
+                return timestamp
+                    .toDate()
+                    .toLocaleDateString(
+                        "id-ID",
+                        {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric"
+                        }
+                    );
+
+            } catch (error) {
+
+                return "-";
+
+            }
+
+        }
+
+
+        // ==================================
+        // ERROR
+        // ==================================
+
+        function tampilkanError(pesan) {
+
+            detailTitle.textContent =
+                "Pengaduan Tidak Ditemukan";
+
+            detailDate.textContent =
+                "";
+
+            namaPelapor.textContent =
+                "-";
+
+            nomorRumah.textContent =
+                "-";
+
+            flat.textContent =
+                "-";
+
+            kategoriLaporan.textContent =
+                "-";
+
+            lokasi.textContent =
+                "-";
+
+            waktuKejadian.textContent =
+                "-";
+
+            deskripsi.textContent =
+                pesan;
+
+            tindakan.textContent =
+                "-";
+
+            idPengaduan.textContent =
+                "ID Pengaduan: -";
+
+            terakhirDiperbarui.textContent =
+                "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

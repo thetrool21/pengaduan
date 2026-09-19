@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin | Lapor Pak</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #f4f7fa;
+
+            color: #173c5b;
+
+            min-height: 100vh;
+        }
+
+
+        .container {
+            width: 100%;
+
+            max-width: 1000px;
+
+            margin: 0 auto;
+
+            padding: 25px 15px 45px;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .header {
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+
+        .header-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .header-title h1 {
+            color: #173c5b;
+
+            font-size: 26px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .header-title p {
+            color: #7891a5;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        .jumlah-laporan {
+            flex-shrink: 0;
+
+            background: #eef4f8;
+
+            color: #173c5b;
+
+            padding: 10px 14px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           LIST
+        ========================== */
+
+        .pengaduan-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 16px;
+        }
+
+
+        /* =========================
+           CARD
+        ========================== */
+
+        .pengaduan-card {
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            border: 1px solid #e8edf2;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .card-header {
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 16px;
+        }
+
+
+        .card-title h2 {
+            color: #173c5b;
+
+            font-size: 20px;
+
+            margin-bottom: 5px;
+
+            line-height: 1.3;
+        }
+
+
+        .card-id {
+            color: #9aa7b0;
+
+            font-size: 10px;
+
+            word-break: break-all;
+        }
+
+
+        /* =========================
+           STATUS
+        ========================== */
+
+        .status {
+            flex-shrink: 0;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 7px 11px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        .status.menunggu {
+            background: #fff3cd;
+
+            color: #856404;
+        }
+
+
+        .status.dikonfirmasi {
+            background: #cfe2ff;
+
+            color: #084298;
+        }
+
+
+        .status.selesai {
+            background: #d1e7dd;
+
+            color: #0f5132;
+        }
+
+
+        .status.ditutup {
+            background: #e2e3e5;
+
+            color: #41464b;
+        }
+
+
+        /* =========================
+           INFO
+        ========================== */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 10px;
+
+            margin-bottom: 16px;
+        }
+
+
+        .info {
+            background: #f8fafc;
+
+            border-radius: 8px;
+
+            padding: 11px 12px;
+        }
+
+
+        .info-label {
+            display: block;
+
+            color: #8d9ba6;
+
+            font-size: 9px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .info-value {
+            display: block;
+
+            color: #173c5b;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================
+           DESKRIPSI
+        ========================== */
+
+        .description {
+            background: #f8fafc;
+
+            border-radius: 8px;
+
+            padding: 12px;
+
+            color: #4e6472;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            margin-bottom: 16px;
+        }
+
+
+        .description-title {
+            display: block;
+
+            color: #173c5b;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================
+           TINDAKAN
+        ========================== */
+
+        .tindakan {
+            background: #eef4f8;
+
+            border-left: 4px solid #073b63;
+
+            border-radius: 6px;
+
+            padding: 11px 12px;
+
+            margin-bottom: 18px;
+
+            color: #4e6472;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        .tindakan-title {
+            display: block;
+
+            color: #173c5b;
+
+            font-weight: 700;
+
+            font-size: 10px;
+
+            margin-bottom: 4px;
+        }
+
+
+        /* =========================
+           ACTION BUTTON
+        ========================== */
+
+        .actions {
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            padding-top: 15px;
+
+            border-top: 1px solid #edf0f2;
+        }
+
+
+        .btn {
+            min-height: 42px;
+
+            padding: 10px 17px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease,
+                opacity 0.2s ease;
+        }
+
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+
+        .btn:disabled {
+            opacity: 0.55;
+
+            cursor: not-allowed;
+        }
+
+
+        /* KONFIRMASI */
+
+        .btn-konfirmasi {
+            background: #073b63;
+        }
+
+
+        .btn-konfirmasi:hover {
+            background: #0a4d80;
+        }
+
+
+        /* SELESAI */
+
+        .btn-selesai {
+            background: #198754;
+        }
+
+
+        .btn-selesai:hover {
+            background: #157347;
+        }
+
+
+        /* DITUTUP */
+
+        .btn-ditutup {
+            background: #6c757d;
+        }
+
+
+        .btn-ditutup:hover {
+            background: #5c636a;
+        }
+
+
+        /* =========================
+           STATUS AKHIR
+        ========================== */
+
+        .status-final {
+            padding-top: 12px;
+
+            color: #627583;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           LOADING
+        ========================== */
+
+        .loading {
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            color: #8193a0;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           EMPTY
+        ========================== */
+
+        .empty {
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 45px 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .empty-icon {
+            font-size: 35px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .empty h2 {
+            color: #173c5b;
+
+            font-size: 17px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .empty p {
+            color: #8193a0;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           ERROR
+        ========================== */
+
+        .error {
+            background: #fff1f2;
+
+            border: 1px solid #f3c2c7;
+
+            border-radius: 10px;
+
+            padding: 17px;
+
+            color: #842029;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 650px) {
+
+            .container {
+                padding: 15px 12px 30px;
+            }
+
+
+            .header {
+                padding: 17px;
+            }
+
+
+            .header-top {
+                align-items: flex-start;
+            }
+
+
+            .header-title h1 {
+                font-size: 20px;
+            }
+
+
+            .header-title p {
+                font-size: 11px;
+            }
+
+
+            .jumlah-laporan {
+                font-size: 10px;
+
+                padding: 8px 10px;
+            }
+
+
+            .pengaduan-card {
+                padding: 15px;
+            }
+
+
+            .card-header {
+                flex-direction: column;
+            }
+
+
+            .card-title h2 {
+                font-size: 17px;
+            }
+
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .actions {
+                flex-direction: column;
+            }
+
+
+            .btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <div class="header">
+
+            <div class="header-top">
+
+                <div class="header-title">
+
+                    <h1>
+                        Panel Admin
+                    </h1>
+
+                    <p>
+                        Kelola dan proses laporan pengaduan
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="jumlah-laporan"
+                    id="jumlah-laporan"
+                >
+                    0 Laporan
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             LIST PENGADUAN
+        ========================== -->
+
+        <div
+            class="pengaduan-list"
+            id="pengaduan-list"
+        >
+
+            <div class="loading">
+                Memuat laporan...
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script type="module">
+
+        // ===========================================
+        // FIREBASE
+        // ===========================================
+
+        import { db } from "../js/firebase-config.js";
+
+
+        import {
+            collection,
+            onSnapshot,
+            doc,
+            updateDoc,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+        // ===========================================
+        // ELEMENT
+        // ===========================================
+
+        const daftarPengaduan =
+            document.getElementById(
+                "pengaduan-list"
+            );
+
+
+        const jumlahLaporan =
+            document.getElementById(
+                "jumlah-laporan"
+            );
+
+
+        // ===========================================
+        // ESCAPE HTML
+        // ===========================================
+
+        function escapeHTML(value) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+
+                return "";
+
+            }
+
+
+            return String(value)
+
+                .replace(/&/g, "&amp;")
+
+                .replace(/</g, "&lt;")
+
+                .replace(/>/g, "&gt;")
+
+                .replace(/"/g, "&quot;")
+
+                .replace(/'/g, "&#039;");
+
+        }
+
+        //NORMALISASI STATUS
+
+        function normalisasiStatus(status) {
+
+    const s = String(status || "").trim().toLowerCase();
+
+    if (s === "dikonfirmasi") return "Dikonfirmasi";
+    if (s === "selesai")      return "Selesai";
+    if (s === "ditutup")      return "Ditutup";
+
+    // Semua status lain (Menunggu, Terkirim, kosong, dll.)
+    // dianggap laporan baru yang belum dikonfirmasi
+    return "Menunggu Konfirmasi";
+
+}
+
+
+        // ===========================================
+        // STATUS CLASS
+        // ===========================================
+
+        function getStatusClass(status) {
+
+            switch (status) {
+
+                case "Menunggu Konfirmasi":
+                    return "menunggu";
+
+                case "Dikonfirmasi":
+                    return "dikonfirmasi";
+
+                case "Selesai":
+                    return "selesai";
+
+                case "Ditutup":
+                    return "ditutup";
+
+                default:
+                    return "menunggu";
+
+            }
+
+        }
+
+
+        // ===========================================
+        // FIRESTORE
+        // ===========================================
+
+        const pengaduanRef =
+            collection(
+                db,
+                "pengaduan"
+            );
+
+
+        onSnapshot(
+
+            pengaduanRef,
+
+            (snapshot) => {
+
+                daftarPengaduan.innerHTML = "";
+
+
+                jumlahLaporan.textContent =
+                    `${snapshot.size} Laporan`;
+
+
+                // ==============================
+                // BELUM ADA DATA
+                // ==============================
+
+                if (snapshot.empty) {
+
+                    daftarPengaduan.innerHTML = `
+
+                        <div class="empty">
+
+                            <div class="empty-icon">
+                                📭
+                            </div>
+
+                            <h2>
+                                Belum Ada Pengaduan
+                            </h2>
+
+                            <p>
+                                Laporan baru akan muncul di sini.
+                            </p>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                // ==============================
+                // LOOP DATA
+                // ==============================
+
+                snapshot.forEach(
+                    (docSnapshot) => {
+
+                        const data =
+                            docSnapshot.data();
+
+
+                        const id =
+                            docSnapshot.id;
+
+
+                       const status =
+                            normalisasiStatus(data.status);
+
+
+                        const statusClass =
+                            getStatusClass(
+                                status
+                            );
+
+
+                        // ==========================
+                        // TOMBOL
+                        // ==========================
+
+                        let actionHTML = "";
+
+
+                        if (
+                            status ===
+                            "Menunggu Konfirmasi"
+                        ) {
+
+                            actionHTML = `
+
+                                <div class="actions">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-konfirmasi"
+                                        data-action="konfirmasi"
+                                        data-id="${escapeHTML(id)}"
+                                    >
+                                        Konfirmasi Laporan
+                                    </button>
+
+                                </div>
+
+                            `;
+
+                        }
+
+
+                        else if (
+                            status ===
+                            "Dikonfirmasi"
+                        ) {
+
+                            actionHTML = `
+
+                                <div class="actions">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-selesai"
+                                        data-action="selesai"
+                                        data-id="${escapeHTML(id)}"
+                                    >
+                                        Selesai
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-ditutup"
+                                        data-action="ditutup"
+                                        data-id="${escapeHTML(id)}"
+                                    >
+                                        Ditutup
+                                    </button>
+
+                                </div>
+
+                            `;
+
+                        }
+
+
+                        else {
+
+                            actionHTML = `
+
+                                <div class="status-final">
+
+                                    ✓ Laporan telah
+                                    <strong>
+                                        ${escapeHTML(
+                                            status.toLowerCase()
+                                        )}
+                                    </strong>.
+
+                                </div>
+
+                            `;
+
+                        }
+
+
+                        // ==========================
+                        // CARD
+                        // ==========================
+
+                        const card =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        card.className =
+                            "pengaduan-card";
+
+
+                        card.innerHTML = `
+
+                            <div class="card-header">
+
+                                <div class="card-title">
+
+                                    <h2>
+                                        ${escapeHTML(
+                                            data.judulLaporan || "-"
+                                        )}
+                                    </h2>
+
+                                    <div class="card-id">
+
+                                        ID:
+                                        ${escapeHTML(id)}
+
+                                    </div>
+
+                                </div>
+
+
+                                <span
+                                    class="status ${statusClass}"
+                                >
+                                    ${escapeHTML(status)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="info-grid">
+
+
+                                <div class="info">
+
+                                    <span class="info-label">
+                                        Nama Pelapor
+                                    </span>
+
+                                    <span class="info-value">
+
+                                        ${escapeHTML(
+                                            data.namaPelapor || "-"
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="info">
+
+                                    <span class="info-label">
+                                        No. Rumah
+                                    </span>
+
+                                    <span class="info-value">
+
+                                        ${escapeHTML(
+                                            data.nomorRumah || "-"
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="info">
+
+                                    <span class="info-label">
+                                        Flat
+                                    </span>
+
+                                    <span class="info-value">
+
+                                        ${escapeHTML(
+                                            data.flat || "-"
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="info">
+
+                                    <span class="info-label">
+                                        Jenis Laporan
+                                    </span>
+
+                                    <span class="info-value">
+
+                                        ${escapeHTML(
+                                            data.jenisLaporan || "-"
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="info">
+
+                                    <span class="info-label">
+                                        Lokasi
+                                    </span>
+
+                                    <span class="info-value">
+
+                                        ${escapeHTML(
+                                            data.lokasi || "-"
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+
+                                <div class="info">
+
+                                    <span class="info-label">
+                                        Waktu Kejadian
+                                    </span>
+
+                                    <span class="info-value">
+
+                                        ${escapeHTML(
+                                            data.waktuKejadian || "-"
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="description">
+
+                                <span class="description-title">
+                                    Kronologi / Deskripsi
+                                </span>
+
+                                ${escapeHTML(
+                                    data.deskripsi || "-"
+                                )}
+
+                            </div>
+
+
+                            <div class="tindakan">
+
+                                <span class="tindakan-title">
+                                    Tindakan Petugas
+                                </span>
+
+                                ${escapeHTML(
+                                    data.tindakanPetugas ||
+                                    "Belum ada tindakan petugas."
+                                )}
+
+                            </div>
+
+
+                            ${actionHTML}
+
+                        `;
+
+
+                        daftarPengaduan.appendChild(
+                            card
+                        );
+
+                    }
+                );
+
+            },
+
+
+            // =======================================
+            // ERROR
+            // =======================================
+
+            (error) => {
+
+                console.error(
+                    "Firestore error:",
+                    error
+                );
+
+
+                daftarPengaduan.innerHTML = `
+
+                    <div class="error">
+
+                        <strong>
+                            Gagal mengambil data pengaduan.
+                        </strong>
+
+                        <br><br>
+
+                        ${escapeHTML(
+                            error.message
+                        )}
+
+                    </div>
+
+                `;
+
+            }
+
+        );
+
+
+        // ===========================================
+        // EVENT TOMBOL
+        // ===========================================
+
+        daftarPengaduan.addEventListener(
+            "click",
+            async (event) => {
+
+
+                const button =
+                    event.target.closest(
+                        "[data-action]"
+                    );
+
+
+                if (!button) {
+                    return;
+                }
+
+
+                const id =
+                    button.dataset.id;
+
+
+                const action =
+                    button.dataset.action;
+
+
+                let statusBaru = "";
+
+                let tindakanBaru = "";
+
+                let fieldTambahan = {};
+
+                let pesanKonfirmasi = "";
+
+
+                // ==================================
+                // KONFIRMASI
+                // ==================================
+
+                if (
+                    action ===
+                    "konfirmasi"
+                ) {
+
+                    statusBaru =
+                        "Dikonfirmasi";
+
+
+                    tindakanBaru =
+                        "Laporan telah dikonfirmasi oleh petugas.";
+
+
+                    pesanKonfirmasi =
+                        "Apakah laporan ini ingin dikonfirmasi?";
+
+
+                    fieldTambahan = {
+
+                        confirmedAt:
+                            serverTimestamp()
+
+                    };
+
+                }
+
+
+                // ==================================
+                // SELESAI
+                // ==================================
+
+                else if (
+                    action ===
+                    "selesai"
+                ) {
+
+                    statusBaru =
+                        "Selesai";
+
+
+                    tindakanBaru =
+                        "Laporan telah diselesaikan oleh petugas.";
+
+
+                    pesanKonfirmasi =
+                        "Apakah laporan ini sudah selesai?";
+
+
+                    fieldTambahan = {
+
+                        selesaiAt:
+                            serverTimestamp()
+
+                    };
+
+                }
+
+
+                // ==================================
+                // DITUTUP
+                // ==================================
+
+                else if (
+                    action ===
+                    "ditutup"
+                ) {
+
+                    statusBaru =
+                        "Ditutup";
+
+
+                    tindakanBaru =
+                        "Laporan telah ditutup oleh petugas.";
+
+
+                    pesanKonfirmasi =
+                        "Apakah laporan ini ingin ditutup?";
+
+
+                    fieldTambahan = {
+
+                        ditutupAt:
+                            serverTimestamp()
+
+                    };
+
+                }
+
+
+                else {
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // KONFIRMASI USER
+                // ==================================
+
+                const yakin =
+                    confirm(
+                        pesanKonfirmasi
+                    );
+
+
+                if (!yakin) {
+                    return;
+                }
+
+
+                // ==================================
+                // TOMBOL DISABLE
+                // ==================================
+
+                button.disabled =
+                    true;
+
+                button.textContent =
+                    "Memproses...";
+
+
+                try {
+
+
+                    // ==================================
+                    // DOCUMENT
+                    // ==================================
+
+                    const pengaduanDoc =
+                        doc(
+                            db,
+                            "pengaduan",
+                            id
+                        );
+
+
+                    // ==================================
+                    // UPDATE
+                    // ==================================
+
+                    await updateDoc(
+
+                        pengaduanDoc,
+
+                        {
+
+                            status:
+                                statusBaru,
+
+                            tindakanPetugas:
+                                tindakanBaru,
+
+                            updatedAt:
+                                serverTimestamp(),
+
+                            ...fieldTambahan
+
+                        }
+
+                    );
+
+
+                    console.log(
+                        "Berhasil mengubah status:",
+                        statusBaru
+                    );
+
+
+                }
+
+
+                catch (error) {
+
+                    console.error(
+                        "Gagal update Firestore:",
+                        error
+                    );
+
+
+                    alert(
+                        "Gagal memproses pengaduan.\n\n" +
+                        error.message
+                    );
+
+
+                    button.disabled =
+                        false;
+
+                    button.textContent =
+                        "Coba Lagi";
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
