@@ -1,14 +1,11 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="id">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Admin | Lapor Pak</title>
 
@@ -24,22 +21,16 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-
             background: #f4f7fa;
-
             color: #173c5b;
-
             min-height: 100vh;
         }
 
 
         .container {
             width: 100%;
-
             max-width: 1000px;
-
             margin: 0 auto;
-
             padding: 25px 15px 45px;
         }
 
@@ -50,74 +41,101 @@
 
         .header {
             background: #ffffff;
-
             border-radius: 12px;
-
             padding: 22px;
-
             margin-bottom: 20px;
-
-            box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
         }
 
 
         .header-top {
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             gap: 15px;
         }
 
 
         .header-title h1 {
             color: #173c5b;
-
             font-size: 26px;
-
             margin-bottom: 6px;
         }
 
 
         .header-title p {
             color: #7891a5;
-
             font-size: 13px;
-
             line-height: 1.5;
+        }
+
+
+        /* =========================
+           SEARCH + JUMLAH LAPORAN
+        ========================== */
+
+        .header-tools {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+
+        .search-input {
+            width: 240px;
+            height: 38px;
+            padding: 0 14px;
+            border: 1px solid #d5dfe7;
+            border-radius: 8px;
+            background: #f8fafc;
+            color: #173c5b;
+            font-family: inherit;
+            font-size: 12px;
+            outline: none;
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+        }
+
+
+        .search-input::placeholder {
+            color: #8d9ba6;
+        }
+
+
+        .search-input:focus {
+            background: #ffffff;
+            border-color: #073b63;
+            box-shadow: 0 0 0 3px rgba(7, 59, 99, 0.12);
         }
 
 
         .jumlah-laporan {
             flex-shrink: 0;
-
             background: #eef4f8;
-
             color: #173c5b;
-
             padding: 10px 14px;
-
             border-radius: 8px;
-
             font-size: 12px;
-
             font-weight: 700;
+            white-space: nowrap;
         }
 
 
         /* =========================
            LIST
+           (background di bawah kartu laporan)
         ========================== */
 
         .pengaduan-list {
             display: flex;
-
             flex-direction: column;
-
             gap: 16px;
+            background: #dbe6ef;
+            padding: 16px;
+            border-radius: 12px;
         }
 
 
@@ -127,47 +145,33 @@
 
         .pengaduan-card {
             background: #ffffff;
-
             border-radius: 12px;
-
             padding: 20px;
-
             border: 1px solid #e8edf2;
-
-            box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
 
         .card-header {
             display: flex;
-
             align-items: flex-start;
-
             justify-content: space-between;
-
             gap: 15px;
-
             margin-bottom: 16px;
         }
 
 
         .card-title h2 {
             color: #173c5b;
-
             font-size: 20px;
-
             margin-bottom: 5px;
-
             line-height: 1.3;
         }
 
 
         .card-id {
             color: #9aa7b0;
-
             font-size: 10px;
-
             word-break: break-all;
         }
 
@@ -178,49 +182,37 @@
 
         .status {
             flex-shrink: 0;
-
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
-
             padding: 7px 11px;
-
             border-radius: 20px;
-
             font-size: 10px;
-
             font-weight: 700;
-
             white-space: nowrap;
         }
 
 
         .status.menunggu {
             background: #fff3cd;
-
             color: #856404;
         }
 
 
         .status.dikonfirmasi {
             background: #cfe2ff;
-
             color: #084298;
         }
 
 
         .status.selesai {
             background: #d1e7dd;
-
             color: #0f5132;
         }
 
 
         .status.ditutup {
             background: #e2e3e5;
-
             color: #41464b;
         }
 
@@ -231,45 +223,32 @@
 
         .info-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 10px;
-
             margin-bottom: 16px;
         }
 
 
         .info {
             background: #f8fafc;
-
             border-radius: 8px;
-
             padding: 11px 12px;
         }
 
 
         .info-label {
             display: block;
-
             color: #8d9ba6;
-
             font-size: 9px;
-
             margin-bottom: 4px;
         }
 
 
         .info-value {
             display: block;
-
             color: #173c5b;
-
             font-size: 11px;
-
             font-weight: 600;
-
             word-break: break-word;
         }
 
@@ -280,30 +259,20 @@
 
         .description {
             background: #f8fafc;
-
             border-radius: 8px;
-
             padding: 12px;
-
             color: #4e6472;
-
             font-size: 11px;
-
             line-height: 1.6;
-
             margin-bottom: 16px;
         }
 
 
         .description-title {
             display: block;
-
             color: #173c5b;
-
             font-size: 10px;
-
             font-weight: 700;
-
             margin-bottom: 5px;
         }
 
@@ -314,32 +283,21 @@
 
         .tindakan {
             background: #eef4f8;
-
             border-left: 4px solid #073b63;
-
             border-radius: 6px;
-
             padding: 11px 12px;
-
             margin-bottom: 18px;
-
             color: #4e6472;
-
             font-size: 11px;
-
             line-height: 1.5;
         }
 
 
         .tindakan-title {
             display: block;
-
             color: #173c5b;
-
             font-weight: 700;
-
             font-size: 10px;
-
             margin-bottom: 4px;
         }
 
@@ -350,34 +308,22 @@
 
         .actions {
             display: flex;
-
             gap: 10px;
-
             flex-wrap: wrap;
-
             padding-top: 15px;
-
             border-top: 1px solid #edf0f2;
         }
 
 
         .btn {
             min-height: 42px;
-
             padding: 10px 17px;
-
             border: none;
-
             border-radius: 7px;
-
             color: white;
-
             font-size: 11px;
-
             font-weight: 700;
-
             cursor: pointer;
-
             transition:
                 background 0.2s ease,
                 transform 0.15s ease,
@@ -392,12 +338,9 @@
 
         .btn:disabled {
             opacity: 0.55;
-
             cursor: not-allowed;
         }
 
-
-        /* KONFIRMASI */
 
         .btn-konfirmasi {
             background: #073b63;
@@ -409,8 +352,6 @@
         }
 
 
-        /* SELESAI */
-
         .btn-selesai {
             background: #198754;
         }
@@ -420,8 +361,6 @@
             background: #157347;
         }
 
-
-        /* DITUTUP */
 
         .btn-ditutup {
             background: #6c757d;
@@ -439,11 +378,8 @@
 
         .status-final {
             padding-top: 12px;
-
             color: #627583;
-
             font-size: 11px;
-
             font-weight: 600;
         }
 
@@ -454,15 +390,10 @@
 
         .loading {
             background: #ffffff;
-
             border-radius: 12px;
-
             padding: 40px 20px;
-
             text-align: center;
-
             color: #8193a0;
-
             font-size: 13px;
         }
 
@@ -473,38 +404,30 @@
 
         .empty {
             background: #ffffff;
-
             border-radius: 12px;
-
             padding: 45px 20px;
-
             text-align: center;
-
-            box-shadow:
-                0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
 
         .empty-icon {
             font-size: 35px;
-
             margin-bottom: 10px;
         }
 
 
         .empty h2 {
             color: #173c5b;
-
             font-size: 17px;
-
             margin-bottom: 5px;
         }
 
 
         .empty p {
             color: #8193a0;
-
             font-size: 12px;
+            word-break: break-word;
         }
 
 
@@ -514,17 +437,11 @@
 
         .error {
             background: #fff1f2;
-
             border: 1px solid #f3c2c7;
-
             border-radius: 10px;
-
             padding: 17px;
-
             color: #842029;
-
             font-size: 11px;
-
             line-height: 1.5;
         }
 
@@ -546,7 +463,8 @@
 
 
             .header-top {
-                align-items: flex-start;
+                flex-direction: column;
+                align-items: stretch;
             }
 
 
@@ -560,10 +478,27 @@
             }
 
 
+            .header-tools {
+                width: 100%;
+            }
+
+
+            .search-input {
+                flex: 1;
+                width: auto;
+                min-width: 0;
+                font-size: 16px; /* mencegah zoom otomatis di iPhone */
+            }
+
+
             .jumlah-laporan {
                 font-size: 10px;
-
                 padding: 8px 10px;
+            }
+
+
+            .pengaduan-list {
+                padding: 10px;
             }
 
 
@@ -619,22 +554,31 @@
 
                 <div class="header-title">
 
-                    <h1>
-                        Panel Admin
-                    </h1>
+                    <h1>Panel Admin</h1>
 
-                    <p>
-                        Kelola dan proses laporan pengaduan
-                    </p>
+                    <p>Kelola dan proses laporan pengaduan</p>
 
                 </div>
 
 
-                <div
-                    class="jumlah-laporan"
-                    id="jumlah-laporan"
-                >
-                    0 Laporan
+                <div class="header-tools">
+
+                    <input
+                        type="search"
+                        id="cari-laporan"
+                        class="search-input"
+                        placeholder="Cari laporan..."
+                        aria-label="Cari laporan"
+                        autocomplete="off"
+                    >
+
+                    <div
+                        class="jumlah-laporan"
+                        id="jumlah-laporan"
+                    >
+                        0 Laporan
+                    </div>
+
                 </div>
 
             </div>
@@ -682,16 +626,91 @@
         // ELEMENT
         // ===========================================
 
-        const daftarPengaduan =
-            document.getElementById(
-                "pengaduan-list"
-            );
+        const daftarPengaduan = document.getElementById("pengaduan-list");
+
+        const jumlahLaporan = document.getElementById("jumlah-laporan");
+
+        const inputCari = document.getElementById("cari-laporan");
 
 
-        const jumlahLaporan =
-            document.getElementById(
-                "jumlah-laporan"
-            );
+        // ===========================================
+        // STATE
+        // ===========================================
+
+        // Semua laporan dari Firestore: [{ id, data }]
+        let semuaPengaduan = [];
+
+        // Kata kunci pencarian saat ini
+        let kataCari = "";
+
+
+        // ===========================================
+        // URUTAN LAPORAN (terbaru -> terlama)
+        //
+        // Isi daftar ini dengan nama field di Firestore yang
+        // menyimpan WAKTU LAPORAN DIKIRIM. Field pertama yang
+        // ditemukan pada sebuah laporan akan dipakai.
+        // ===========================================
+
+        const FIELD_WAKTU_LAPOR = [
+            "createdAt",
+            "dibuatPada",
+            "tanggalLapor",
+            "waktuLapor",
+            "timestamp",
+            "tanggal"
+        ];
+
+
+        function keMillis(value) {
+
+            if (!value) return 0;
+
+            // Firestore Timestamp
+            if (typeof value.toMillis === "function") {
+                return value.toMillis();
+            }
+
+            if (value instanceof Date) {
+                return value.getTime();
+            }
+
+            if (typeof value === "number") {
+                return value;
+            }
+
+            if (typeof value === "string") {
+                const t = Date.parse(value);
+                return Number.isNaN(t) ? 0 : t;
+            }
+
+            return 0;
+
+        }
+
+
+        function ambilWaktuLaporan(data) {
+
+            for (const field of FIELD_WAKTU_LAPOR) {
+
+                const ms = keMillis(data[field]);
+
+                if (ms) return ms;
+
+            }
+
+            // Cadangan: laporan lama tanpa field waktu kirim
+            // memakai waktu kejadian, jika bisa dibaca.
+            return keMillis(data.waktuKejadian);
+
+        }
+
+
+        function bandingkanTerbaru(a, b) {
+
+            return ambilWaktuLaporan(b.data) - ambilWaktuLaporan(a.data);
+
+        }
 
 
         // ===========================================
@@ -700,45 +719,38 @@
 
         function escapeHTML(value) {
 
-            if (
-                value === null ||
-                value === undefined
-            ) {
-
+            if (value === null || value === undefined) {
                 return "";
-
             }
 
-
             return String(value)
-
                 .replace(/&/g, "&amp;")
-
                 .replace(/</g, "&lt;")
-
                 .replace(/>/g, "&gt;")
-
                 .replace(/"/g, "&quot;")
-
                 .replace(/'/g, "&#039;");
 
         }
 
-        //NORMALISASI STATUS
+
+        // ===========================================
+        // NORMALISASI STATUS
+        // Status selain Dikonfirmasi / Selesai / Ditutup
+        // (mis. "Menunggu", "Terkirim", kosong) dianggap
+        // laporan baru yang belum dikonfirmasi.
+        // ===========================================
 
         function normalisasiStatus(status) {
 
-    const s = String(status || "").trim().toLowerCase();
+            const s = String(status || "").trim().toLowerCase();
 
-    if (s === "dikonfirmasi") return "Dikonfirmasi";
-    if (s === "selesai")      return "Selesai";
-    if (s === "ditutup")      return "Ditutup";
+            if (s === "dikonfirmasi") return "Dikonfirmasi";
+            if (s === "selesai") return "Selesai";
+            if (s === "ditutup") return "Ditutup";
 
-    // Semua status lain (Menunggu, Terkirim, kosong, dll.)
-    // dianggap laporan baru yang belum dikonfirmasi
-    return "Menunggu Konfirmasi";
+            return "Menunggu Konfirmasi";
 
-}
+        }
 
 
         // ===========================================
@@ -770,14 +782,378 @@
 
 
         // ===========================================
+        // PENCARIAN
+        // Semua kata yang diketik harus ada di salah satu
+        // kolom laporan (tidak peduli huruf besar/kecil).
+        // ===========================================
+
+        function cocokDenganPencarian(item, kunci) {
+
+            if (!kunci) {
+                return true;
+            }
+
+            const d = item.data;
+
+            const teks = [
+                item.id,
+                d.judulLaporan,
+                d.namaPelapor,
+                d.nomorRumah,
+                d.flat,
+                d.jenisLaporan,
+                d.lokasi,
+                d.waktuKejadian,
+                d.deskripsi,
+                d.tindakanPetugas,
+                normalisasiStatus(d.status)
+            ]
+                .map((v) =>
+                    typeof v === "string" || typeof v === "number"
+                        ? String(v)
+                        : ""
+                )
+                .join(" ")
+                .toLowerCase();
+
+            return kunci
+                .split(/\s+/)
+                .every((kata) => teks.includes(kata));
+
+        }
+
+
+        // ===========================================
+        // WAKTU LAPORAN (untuk pengurutan)
+        // Mengubah Timestamp Firestore / Date / angka / teks
+        // tanggal menjadi milidetik. Hasil null = tidak terbaca.
+        // ===========================================
+
+        // Nama field waktu pembuatan laporan yang dicoba, berurutan.
+        // Sesuaikan dengan field yang disimpan halaman pelapor.
+        const FIELD_WAKTU_LAPORAN = [
+            "createdAt",
+            "tanggalLaporan",
+            "waktuLaporan",
+            "tanggalDibuat",
+            "timestamp"
+        ];
+
+
+        function waktuLaporan(data) {
+
+            for (const field of FIELD_WAKTU_LAPORAN) {
+
+                const t = keMillis(data[field]);
+
+                if (t !== null) {
+                    return t;
+                }
+
+            }
+
+            // Cadangan: waktu kejadian. Tanpa waktu sama sekali = paling bawah.
+            const kejadian = keMillis(data.waktuKejadian);
+
+            return kejadian !== null ? kejadian : 0;
+
+        }
+
+
+        // ===========================================
+        // BUAT CARD
+        // ===========================================
+
+        function buatCard(id, data) {
+
+            const status = normalisasiStatus(data.status);
+
+            const statusClass = getStatusClass(status);
+
+
+            // ==========================
+            // TOMBOL
+            // ==========================
+
+            let actionHTML = "";
+
+
+            if (status === "Menunggu Konfirmasi") {
+
+                actionHTML = `
+
+                    <div class="actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-konfirmasi"
+                            data-action="konfirmasi"
+                            data-id="${escapeHTML(id)}"
+                        >
+                            Konfirmasi Laporan
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            else if (status === "Dikonfirmasi") {
+
+                actionHTML = `
+
+                    <div class="actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-selesai"
+                            data-action="selesai"
+                            data-id="${escapeHTML(id)}"
+                        >
+                            Selesai
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn btn-ditutup"
+                            data-action="ditutup"
+                            data-id="${escapeHTML(id)}"
+                        >
+                            Ditutup
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            else {
+
+                actionHTML = `
+
+                    <div class="status-final">
+
+                        ✓ Laporan telah
+                        <strong>${escapeHTML(status.toLowerCase())}</strong>.
+
+                    </div>
+
+                `;
+
+            }
+
+
+            // ==========================
+            // CARD
+            // ==========================
+
+            const card = document.createElement("div");
+
+            card.className = "pengaduan-card";
+
+
+            card.innerHTML = `
+
+                <div class="card-header">
+
+                    <div class="card-title">
+
+                        <h2>${escapeHTML(data.judulLaporan || "-")}</h2>
+
+                        <div class="card-id">
+                            ID: ${escapeHTML(id)}
+                        </div>
+
+                    </div>
+
+
+                    <span class="status ${statusClass}">
+                        ${escapeHTML(status)}
+                    </span>
+
+                </div>
+
+
+                <div class="info-grid">
+
+                    <div class="info">
+                        <span class="info-label">Nama Pelapor</span>
+                        <span class="info-value">${escapeHTML(data.namaPelapor || "-")}</span>
+                    </div>
+
+
+                    <div class="info">
+                        <span class="info-label">No. Rumah</span>
+                        <span class="info-value">${escapeHTML(data.nomorRumah || "-")}</span>
+                    </div>
+
+
+                    <div class="info">
+                        <span class="info-label">Flat</span>
+                        <span class="info-value">${escapeHTML(data.flat || "-")}</span>
+                    </div>
+
+
+                    <div class="info">
+                        <span class="info-label">Jenis Laporan</span>
+                        <span class="info-value">${escapeHTML(data.jenisLaporan || "-")}</span>
+                    </div>
+
+
+                    <div class="info">
+                        <span class="info-label">Lokasi</span>
+                        <span class="info-value">${escapeHTML(data.lokasi || "-")}</span>
+                    </div>
+
+
+                    <div class="info">
+                        <span class="info-label">Waktu Kejadian</span>
+                        <span class="info-value">${escapeHTML(data.waktuKejadian || "-")}</span>
+                    </div>
+
+                </div>
+
+
+                <div class="description">
+
+                    <span class="description-title">
+                        Kronologi / Deskripsi
+                    </span>
+
+                    ${escapeHTML(data.deskripsi || "-")}
+
+                </div>
+
+
+                <div class="tindakan">
+
+                    <span class="tindakan-title">
+                        Tindakan Petugas
+                    </span>
+
+                    ${escapeHTML(data.tindakanPetugas || "Belum ada tindakan petugas.")}
+
+                </div>
+
+
+                ${actionHTML}
+
+            `;
+
+
+            return card;
+
+        }
+
+
+        // ===========================================
+        // RENDER
+        // Dipanggil setiap data Firestore berubah
+        // dan setiap kali kata pencarian berubah.
+        // ===========================================
+
+        function render() {
+
+            const kunci = kataCari.trim().toLowerCase();
+
+            const hasil = [...semuaPengaduan].sort(bandingkanTerbaru).filter(
+                (item) => cocokDenganPencarian(item, kunci)
+            );
+
+
+            jumlahLaporan.textContent = kunci
+                ? `${hasil.length} dari ${semuaPengaduan.length} Laporan`
+                : `${semuaPengaduan.length} Laporan`;
+
+
+            daftarPengaduan.innerHTML = "";
+
+
+            // ==============================
+            // BELUM ADA DATA
+            // ==============================
+
+            if (semuaPengaduan.length === 0) {
+
+                daftarPengaduan.innerHTML = `
+
+                    <div class="empty">
+
+                        <div class="empty-icon">📭</div>
+
+                        <h2>Belum Ada Pengaduan</h2>
+
+                        <p>Laporan baru akan muncul di sini.</p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            // ==============================
+            // PENCARIAN TIDAK ADA HASIL
+            // ==============================
+
+            if (hasil.length === 0) {
+
+                daftarPengaduan.innerHTML = `
+
+                    <div class="empty">
+
+                        <div class="empty-icon">🔍</div>
+
+                        <h2>Laporan Tidak Ditemukan</h2>
+
+                        <p>
+                            Tidak ada laporan yang cocok dengan
+                            "${escapeHTML(kataCari.trim())}".
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            hasil.forEach((item) => {
+                daftarPengaduan.appendChild(
+                    buatCard(item.id, item.data)
+                );
+            });
+
+        }
+
+
+        // ===========================================
+        // INPUT PENCARIAN (langsung mencari saat mengetik)
+        // ===========================================
+
+        inputCari.addEventListener("input", () => {
+
+            kataCari = inputCari.value;
+
+            render();
+
+        });
+
+
+        // ===========================================
         // FIRESTORE
         // ===========================================
 
-        const pengaduanRef =
-            collection(
-                db,
-                "pengaduan"
-            );
+        const pengaduanRef = collection(db, "pengaduan");
 
 
         onSnapshot(
@@ -786,346 +1162,23 @@
 
             (snapshot) => {
 
-                daftarPengaduan.innerHTML = "";
+                semuaPengaduan = [];
 
+                snapshot.forEach((docSnapshot) => {
 
-                jumlahLaporan.textContent =
-                    `${snapshot.size} Laporan`;
+                    semuaPengaduan.push({
+                        id: docSnapshot.id,
+                        data: docSnapshot.data({ serverTimestamps: "estimate" })
+                    });
 
+                });
 
-                // ==============================
-                // BELUM ADA DATA
-                // ==============================
-
-                if (snapshot.empty) {
-
-                    daftarPengaduan.innerHTML = `
-
-                        <div class="empty">
-
-                            <div class="empty-icon">
-                                📭
-                            </div>
-
-                            <h2>
-                                Belum Ada Pengaduan
-                            </h2>
-
-                            <p>
-                                Laporan baru akan muncul di sini.
-                            </p>
-
-                        </div>
-
-                    `;
-
-                    return;
-
-                }
-
-
-                // ==============================
-                // LOOP DATA
-                // ==============================
-
-                snapshot.forEach(
-                    (docSnapshot) => {
-
-                        const data =
-                            docSnapshot.data();
-
-
-                        const id =
-                            docSnapshot.id;
-
-
-                       const status =
-                            normalisasiStatus(data.status);
-
-
-                        const statusClass =
-                            getStatusClass(
-                                status
-                            );
-
-
-                        // ==========================
-                        // TOMBOL
-                        // ==========================
-
-                        let actionHTML = "";
-
-
-                        if (
-                            status ===
-                            "Menunggu Konfirmasi"
-                        ) {
-
-                            actionHTML = `
-
-                                <div class="actions">
-
-                                    <button
-                                        type="button"
-                                        class="btn btn-konfirmasi"
-                                        data-action="konfirmasi"
-                                        data-id="${escapeHTML(id)}"
-                                    >
-                                        Konfirmasi Laporan
-                                    </button>
-
-                                </div>
-
-                            `;
-
-                        }
-
-
-                        else if (
-                            status ===
-                            "Dikonfirmasi"
-                        ) {
-
-                            actionHTML = `
-
-                                <div class="actions">
-
-                                    <button
-                                        type="button"
-                                        class="btn btn-selesai"
-                                        data-action="selesai"
-                                        data-id="${escapeHTML(id)}"
-                                    >
-                                        Selesai
-                                    </button>
-
-
-                                    <button
-                                        type="button"
-                                        class="btn btn-ditutup"
-                                        data-action="ditutup"
-                                        data-id="${escapeHTML(id)}"
-                                    >
-                                        Ditutup
-                                    </button>
-
-                                </div>
-
-                            `;
-
-                        }
-
-
-                        else {
-
-                            actionHTML = `
-
-                                <div class="status-final">
-
-                                    ✓ Laporan telah
-                                    <strong>
-                                        ${escapeHTML(
-                                            status.toLowerCase()
-                                        )}
-                                    </strong>.
-
-                                </div>
-
-                            `;
-
-                        }
-
-
-                        // ==========================
-                        // CARD
-                        // ==========================
-
-                        const card =
-                            document.createElement(
-                                "div"
-                            );
-
-
-                        card.className =
-                            "pengaduan-card";
-
-
-                        card.innerHTML = `
-
-                            <div class="card-header">
-
-                                <div class="card-title">
-
-                                    <h2>
-                                        ${escapeHTML(
-                                            data.judulLaporan || "-"
-                                        )}
-                                    </h2>
-
-                                    <div class="card-id">
-
-                                        ID:
-                                        ${escapeHTML(id)}
-
-                                    </div>
-
-                                </div>
-
-
-                                <span
-                                    class="status ${statusClass}"
-                                >
-                                    ${escapeHTML(status)}
-                                </span>
-
-                            </div>
-
-
-                            <div class="info-grid">
-
-
-                                <div class="info">
-
-                                    <span class="info-label">
-                                        Nama Pelapor
-                                    </span>
-
-                                    <span class="info-value">
-
-                                        ${escapeHTML(
-                                            data.namaPelapor || "-"
-                                        )}
-
-                                    </span>
-
-                                </div>
-
-
-                                <div class="info">
-
-                                    <span class="info-label">
-                                        No. Rumah
-                                    </span>
-
-                                    <span class="info-value">
-
-                                        ${escapeHTML(
-                                            data.nomorRumah || "-"
-                                        )}
-
-                                    </span>
-
-                                </div>
-
-
-                                <div class="info">
-
-                                    <span class="info-label">
-                                        Flat
-                                    </span>
-
-                                    <span class="info-value">
-
-                                        ${escapeHTML(
-                                            data.flat || "-"
-                                        )}
-
-                                    </span>
-
-                                </div>
-
-
-                                <div class="info">
-
-                                    <span class="info-label">
-                                        Jenis Laporan
-                                    </span>
-
-                                    <span class="info-value">
-
-                                        ${escapeHTML(
-                                            data.jenisLaporan || "-"
-                                        )}
-
-                                    </span>
-
-                                </div>
-
-
-                                <div class="info">
-
-                                    <span class="info-label">
-                                        Lokasi
-                                    </span>
-
-                                    <span class="info-value">
-
-                                        ${escapeHTML(
-                                            data.lokasi || "-"
-                                        )}
-
-                                    </span>
-
-                                </div>
-
-
-                                <div class="info">
-
-                                    <span class="info-label">
-                                        Waktu Kejadian
-                                    </span>
-
-                                    <span class="info-value">
-
-                                        ${escapeHTML(
-                                            data.waktuKejadian || "-"
-                                        )}
-
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="description">
-
-                                <span class="description-title">
-                                    Kronologi / Deskripsi
-                                </span>
-
-                                ${escapeHTML(
-                                    data.deskripsi || "-"
-                                )}
-
-                            </div>
-
-
-                            <div class="tindakan">
-
-                                <span class="tindakan-title">
-                                    Tindakan Petugas
-                                </span>
-
-                                ${escapeHTML(
-                                    data.tindakanPetugas ||
-                                    "Belum ada tindakan petugas."
-                                )}
-
-                            </div>
-
-
-                            ${actionHTML}
-
-                        `;
-
-
-                        daftarPengaduan.appendChild(
-                            card
-                        );
-
-                    }
+                // Terbaru di atas, terlama di bawah
+                semuaPengaduan.sort(
+                    (a, b) => waktuLaporan(b.data) - waktuLaporan(a.data)
                 );
+
+                render();
 
             },
 
@@ -1136,25 +1189,17 @@
 
             (error) => {
 
-                console.error(
-                    "Firestore error:",
-                    error
-                );
-
+                console.error("Firestore error:", error);
 
                 daftarPengaduan.innerHTML = `
 
                     <div class="error">
 
-                        <strong>
-                            Gagal mengambil data pengaduan.
-                        </strong>
+                        <strong>Gagal mengambil data pengaduan.</strong>
 
                         <br><br>
 
-                        ${escapeHTML(
-                            error.message
-                        )}
+                        ${escapeHTML(error.message)}
 
                     </div>
 
@@ -1169,239 +1214,146 @@
         // EVENT TOMBOL
         // ===========================================
 
-        daftarPengaduan.addEventListener(
-            "click",
-            async (event) => {
+        daftarPengaduan.addEventListener("click", async (event) => {
 
+            const button = event.target.closest("[data-action]");
 
-                const button =
-                    event.target.closest(
-                        "[data-action]"
-                    );
+            if (!button) {
+                return;
+            }
 
 
-                if (!button) {
-                    return;
-                }
+            const id = button.dataset.id;
 
+            const action = button.dataset.action;
 
-                const id =
-                    button.dataset.id;
 
+            let statusBaru = "";
 
-                const action =
-                    button.dataset.action;
+            let tindakanBaru = "";
 
+            let fieldTambahan = {};
 
-                let statusBaru = "";
+            let pesanKonfirmasi = "";
 
-                let tindakanBaru = "";
 
-                let fieldTambahan = {};
+            // ==================================
+            // KONFIRMASI
+            // ==================================
 
-                let pesanKonfirmasi = "";
+            if (action === "konfirmasi") {
 
+                statusBaru = "Dikonfirmasi";
 
-                // ==================================
-                // KONFIRMASI
-                // ==================================
+                tindakanBaru = "Laporan telah dikonfirmasi oleh petugas.";
 
-                if (
-                    action ===
-                    "konfirmasi"
-                ) {
+                pesanKonfirmasi = "Apakah laporan ini ingin dikonfirmasi?";
 
-                    statusBaru =
-                        "Dikonfirmasi";
-
-
-                    tindakanBaru =
-                        "Laporan telah dikonfirmasi oleh petugas.";
-
-
-                    pesanKonfirmasi =
-                        "Apakah laporan ini ingin dikonfirmasi?";
-
-
-                    fieldTambahan = {
-
-                        confirmedAt:
-                            serverTimestamp()
-
-                    };
-
-                }
-
-
-                // ==================================
-                // SELESAI
-                // ==================================
-
-                else if (
-                    action ===
-                    "selesai"
-                ) {
-
-                    statusBaru =
-                        "Selesai";
-
-
-                    tindakanBaru =
-                        "Laporan telah diselesaikan oleh petugas.";
-
-
-                    pesanKonfirmasi =
-                        "Apakah laporan ini sudah selesai?";
-
-
-                    fieldTambahan = {
-
-                        selesaiAt:
-                            serverTimestamp()
-
-                    };
-
-                }
-
-
-                // ==================================
-                // DITUTUP
-                // ==================================
-
-                else if (
-                    action ===
-                    "ditutup"
-                ) {
-
-                    statusBaru =
-                        "Ditutup";
-
-
-                    tindakanBaru =
-                        "Laporan telah ditutup oleh petugas.";
-
-
-                    pesanKonfirmasi =
-                        "Apakah laporan ini ingin ditutup?";
-
-
-                    fieldTambahan = {
-
-                        ditutupAt:
-                            serverTimestamp()
-
-                    };
-
-                }
-
-
-                else {
-
-                    return;
-
-                }
-
-
-                // ==================================
-                // KONFIRMASI USER
-                // ==================================
-
-                const yakin =
-                    confirm(
-                        pesanKonfirmasi
-                    );
-
-
-                if (!yakin) {
-                    return;
-                }
-
-
-                // ==================================
-                // TOMBOL DISABLE
-                // ==================================
-
-                button.disabled =
-                    true;
-
-                button.textContent =
-                    "Memproses...";
-
-
-                try {
-
-
-                    // ==================================
-                    // DOCUMENT
-                    // ==================================
-
-                    const pengaduanDoc =
-                        doc(
-                            db,
-                            "pengaduan",
-                            id
-                        );
-
-
-                    // ==================================
-                    // UPDATE
-                    // ==================================
-
-                    await updateDoc(
-
-                        pengaduanDoc,
-
-                        {
-
-                            status:
-                                statusBaru,
-
-                            tindakanPetugas:
-                                tindakanBaru,
-
-                            updatedAt:
-                                serverTimestamp(),
-
-                            ...fieldTambahan
-
-                        }
-
-                    );
-
-
-                    console.log(
-                        "Berhasil mengubah status:",
-                        statusBaru
-                    );
-
-
-                }
-
-
-                catch (error) {
-
-                    console.error(
-                        "Gagal update Firestore:",
-                        error
-                    );
-
-
-                    alert(
-                        "Gagal memproses pengaduan.\n\n" +
-                        error.message
-                    );
-
-
-                    button.disabled =
-                        false;
-
-                    button.textContent =
-                        "Coba Lagi";
-
-                }
+                fieldTambahan = { confirmedAt: serverTimestamp() };
 
             }
-        );
+
+
+            // ==================================
+            // SELESAI
+            // ==================================
+
+            else if (action === "selesai") {
+
+                statusBaru = "Selesai";
+
+                tindakanBaru = "Laporan telah diselesaikan oleh petugas.";
+
+                pesanKonfirmasi = "Apakah laporan ini sudah selesai?";
+
+                fieldTambahan = { selesaiAt: serverTimestamp() };
+
+            }
+
+
+            // ==================================
+            // DITUTUP
+            // ==================================
+
+            else if (action === "ditutup") {
+
+                statusBaru = "Ditutup";
+
+                tindakanBaru = "Laporan telah ditutup oleh petugas.";
+
+                pesanKonfirmasi = "Apakah laporan ini ingin ditutup?";
+
+                fieldTambahan = { ditutupAt: serverTimestamp() };
+
+            }
+
+
+            else {
+
+                return;
+
+            }
+
+
+            // ==================================
+            // KONFIRMASI USER
+            // ==================================
+
+            const yakin = confirm(pesanKonfirmasi);
+
+            if (!yakin) {
+                return;
+            }
+
+
+            // ==================================
+            // TOMBOL DISABLE
+            // ==================================
+
+            button.disabled = true;
+
+            button.textContent = "Memproses...";
+
+
+            try {
+
+                await updateDoc(
+
+                    doc(db, "pengaduan", id),
+
+                    {
+                        status: statusBaru,
+
+                        tindakanPetugas: tindakanBaru,
+
+                        updatedAt: serverTimestamp(),
+
+                        ...fieldTambahan
+                    }
+
+                );
+
+                console.log("Berhasil mengubah status:", statusBaru);
+
+            }
+
+
+            catch (error) {
+
+                console.error("Gagal update Firestore:", error);
+
+                alert(
+                    "Gagal memproses pengaduan.\n\n" +
+                    error.message
+                );
+
+                button.disabled = false;
+
+                button.textContent = "Coba Lagi";
+
+            }
+
+        });
 
     </script>
 

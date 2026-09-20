@@ -1,7 +1,3 @@
-/* =========================
-   RESET
-========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -9,553 +5,855 @@
 }
 
 
-/* =========================
-   BODY
-========================= */
-
 body {
-    min-height: 100vh;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    background: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            #f4f7fa,
+            #eef3f7
+        );
+
     color: #173c5b;
+
+    min-height: 100vh;
 }
 
 
-/* =========================
-   CONTAINER UTAMA
-========================= */
+/* =========================================
+   CONTAINER
+========================================= */
 
 .container {
+
     width: 100%;
-    max-width: 500px;
+
+    max-width: 650px;
 
     margin: 0 auto;
-    padding: 24px 14px;
+
+    padding: 25px 15px 50px;
 }
 
 
-/* =========================
-   FOTO PENGADUAN
-========================= */
+/* =========================================
+   HEADER
+========================================= */
 
-.foto-container {
-    width: 145px;
-    height: 96px;
+.form-header {
 
-    margin: 0 auto 15px;
-
-    overflow: hidden;
-    border-radius: 7px;
+    margin-bottom: 18px;
 }
 
-.foto-container img {
+
+.btn-kembali {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #547083;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.btn-kembali:hover {
+
+    color: #073b63;
+
+    transform: translateX(-3px);
+}
+
+
+.header-content {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+.header-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #073b63;
+
+    color: white;
+
+    font-size: 21px;
+
+    box-shadow:
+        0 6px 16px
+        rgba(7, 59, 99, 0.18);
+}
+
+
+.header-content h1 {
+
+    color: #173c5b;
+
+    font-size: 25px;
+
+    line-height: 1.2;
+
+    margin-bottom: 5px;
+}
+
+
+.header-content p {
+
+    color: #7891a5;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    max-width: 430px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card {
+
     width: 100%;
-    height: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e9ee;
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 8px 30px
+        rgba(23, 60, 91, 0.07);
+}
+
+
+/* =========================================
+   INFO BOX
+========================================= */
+
+.form-info {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    background: #f1f7fb;
+
+    border: 1px solid #dbeaf3;
+
+    border-radius: 10px;
+
+    padding: 12px;
+
+    margin-bottom: 25px;
+}
+
+
+.info-icon {
+
+    width: 22px;
+
+    height: 22px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #073b63;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.form-info strong {
 
     display: block;
 
-    object-fit: cover;
-}
-
-
-/* =========================
-   CARD PENGADUAN
-========================= */
-
-.card {
-    position: relative;
-
-    width: 100%;
-
-    padding: 45px 14px 18px;
-
-    background: #eef1f5;
-
-    border-radius: 10px;
-}
-
-
-/* =========================
-   TANGGAL
-========================= */
-
-.tanggal {
-    position: absolute;
-
-    top: 14px;
-    right: 14px;
-
-    color: #c85c67;
+    color: #173c5b;
 
     font-size: 11px;
-    font-weight: 600;
+
+    margin-bottom: 3px;
 }
 
 
-/* =========================
-   FORM CONTROL
-========================= */
+.form-info p {
 
-.form-control {
-    width: 100%;
+    color: #6d8290;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.form-section {
+
+    padding-bottom: 25px;
+
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid #edf1f4;
+}
+
+
+.form-section:last-of-type {
+
+    border-bottom: none;
+
+    margin-bottom: 0;
+
+    padding-bottom: 5px;
+}
+
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.section-heading {
 
     display: flex;
-    flex-direction: column;
 
-    gap: 13px;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-bottom: 17px;
 }
 
 
-/* =========================
-   FORM GROUP
-========================= */
+.section-number {
 
-.form-group {
-    width: 100%;
+    width: 32px;
+
+    height: 32px;
+
+    flex-shrink: 0;
 
     display: flex;
-    flex-direction: column;
 
-    gap: 6px;
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #eef4f8;
+
+    color: #073b63;
+
+    font-size: 10px;
+
+    font-weight: 800;
 }
 
 
-/* =========================
-   LABEL
-========================= */
+.section-heading h2 {
 
-.form-group label {
-    color: #38566e;
+    color: #173c5b;
 
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 15px;
+
+    margin-bottom: 3px;
+}
+
+
+.section-heading p {
+
+    color: #91a0aa;
+
+    font-size: 10px;
 
     line-height: 1.4;
-
-    cursor: pointer;
 }
 
 
-/* =========================
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+
+    margin-bottom: 16px;
+}
+
+
+.form-group:last-child {
+
+    margin-bottom: 0;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    color: #294d65;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+
+.form-group label span {
+
+    color: #d9534f;
+
+    margin-left: 2px;
+}
+
+
+/* =========================================
    INPUT
-========================= */
+========================================= */
 
-.form-group input {
+.form-group input,
+.form-group select,
+.form-group textarea {
+
     width: 100%;
-    height: 38px;
 
-    padding: 8px 11px;
+    border: 1px solid #d7e1e7;
 
-    border: 1px solid #b8c5d0;
-    border-radius: 7px;
+    border-radius: 9px;
+
+    background: #fbfcfd;
+
+    color: #173c5b;
 
     outline: none;
 
-    background: #ffffff;
-    color: #173c5b;
+    font-family: inherit;
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
+    font-size: 12px;
 
     transition:
         border-color 0.2s ease,
-        box-shadow 0.2s ease;
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 
-/* =========================
-   INPUT PLACEHOLDER
-========================= */
+/* INPUT */
 
-.form-group input::placeholder {
-    color: #9aa8b3;
+.form-group input {
+
+    height: 45px;
+
+    padding: 0 13px;
 }
 
 
-/* =========================
-   INPUT FOCUS
-========================= */
+/* SELECT */
 
-.form-group input:focus {
-    border-color: #073b63;
+.form-group select {
 
-    box-shadow: 0 0 0 3px rgba(7, 59, 99, 0.10);
+    height: 45px;
+
+    padding: 0 38px 0 13px;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    background-image:
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            #718796 50%
+        ),
+        linear-gradient(
+            135deg,
+            #718796 50%,
+            transparent 50%
+        );
+
+    background-position:
+        calc(100% - 17px) 19px,
+        calc(100% - 12px) 19px;
+
+    background-size:
+        5px 5px,
+        5px 5px;
+
+    background-repeat: no-repeat;
 }
 
 
-/* =========================
-   REMOVE NUMBER ARROW
-========================= */
+/* TEXTAREA */
 
-.form-group input[type="number"]::-webkit-inner-spin-button,
-.form-group input[type="number"]::-webkit-outer-spin-button {
-    margin: 0;
+.form-group textarea {
 
-    -webkit-appearance: none;
-}
-
-.form-group input[type="number"] {
-    appearance: textfield;
-}
-
-
-/* =========================
-   DESKRIPSI SECTION
-========================= */
-
-.section {
-    width: 100%;
-
-    margin-top: 16px;
-}
-
-
-/* =========================
-   JUDUL SECTION
-========================= */
-
-.section-title {
-    margin-bottom: 6px;
-
-    color: #173c5b;
-
-    font-size: 11px;
-    font-weight: 600;
-
-    line-height: 1.4;
-}
-
-
-/* =========================
-   TEXTAREA
-========================= */
-
-.textarea {
-    width: 100%;
-}
-
-.textarea textarea {
-    width: 100%;
-    min-height: 95px;
-
-    padding: 10px 11px;
-
-    border: 1px solid #b8c5d0;
-    border-radius: 7px;
-
-    outline: none;
-
-    background: #ffffff;
-    color: #173c5b;
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    line-height: 16px;
+    min-height: 135px;
 
     resize: vertical;
 
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+    padding: 12px 13px;
+
+    line-height: 1.6;
 }
 
 
-/* =========================
-   TEXTAREA PLACEHOLDER
-========================= */
+/* =========================================
+   FOCUS
+========================================= */
 
-.textarea textarea::placeholder {
-    color: #9aa8b3;
-}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
 
-
-/* =========================
-   TEXTAREA FOCUS
-========================= */
-
-.textarea textarea:focus {
     border-color: #073b63;
 
-    box-shadow: 0 0 0 3px rgba(7, 59, 99, 0.10);
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(7, 59, 99, 0.08);
 }
 
 
-/* =========================
-   BUTTON SIMPAN
-========================= */
+/* =========================================
+   PLACEHOLDER
+========================================= */
 
-.btn-simpan {
-    width: 94%;
-    height: 42px;
+.form-group input::placeholder,
+.form-group textarea::placeholder {
 
-    display: block;
+    color: #a5b1b9;
+}
 
-    margin: 20px auto 0;
 
-    border: none;
-    border-radius: 7px;
+/* =========================================
+   TEXTAREA INFO
+========================================= */
 
-    background: #073b63;
-    color: #ffffff;
+.textarea-info {
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
+    color: #99a7b0;
+
+    font-size: 9px;
+
+    margin-top: 6px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.form-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #edf1f4;
+}
+
+
+/* =========================================
+   BATAL
+========================================= */
+
+.btn-batal {
+
+    height: 45px;
+
+    padding: 0 18px;
+
+    border: 1px solid #d8e0e5;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #637987;
+
+    font-size: 11px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
     transition:
         background 0.2s ease,
-        transform 0.15s ease;
+        border-color 0.2s ease;
 }
 
 
-/* =========================
-   BUTTON HOVER
-========================= */
+.btn-batal:hover {
+
+    background: #f5f7f9;
+
+    border-color: #c6d1d8;
+}
+
+
+/* =========================================
+   SIMPAN
+========================================= */
+
+.btn-simpan {
+
+    min-width: 190px;
+
+    height: 45px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #073b63;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px
+        rgba(7, 59, 99, 0.18);
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
 
 .btn-simpan:hover {
+
     background: #0a4d80;
+
+    box-shadow:
+        0 7px 18px
+        rgba(7, 59, 99, 0.22);
 }
 
 
-/* =========================
-   BUTTON ACTIVE
-========================= */
-
 .btn-simpan:active {
+
     transform: scale(0.98);
 }
 
 
-/* =========================
+.btn-simpan:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+}
+
+
+.arrow {
+
+    font-size: 17px;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   REQUIRED INFO
+========================================= */
+
+.required-info {
+
+    color: #98a6af;
+
+    font-size: 9px;
+
+    margin-top: 12px;
+
+    text-align: right;
+}
+
+
+.required-info span {
+
+    color: #d9534f;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
    TABLET
-========================= */
+========================================= */
 
 @media (min-width: 600px) {
 
     .container {
-        max-width: 550px;
 
-        padding: 35px 20px;
+        padding-top: 35px;
+
+        max-width: 680px;
     }
 
-
-    /* FOTO */
-
-    .foto-container {
-        width: 180px;
-        height: 120px;
-
-        margin-bottom: 18px;
-    }
-
-
-    /* CARD */
 
     .card {
-        padding: 50px 20px 20px;
 
-        border-radius: 11px;
+        padding: 28px;
     }
 
 
-    /* TANGGAL */
+    .header-content h1 {
 
-    .tanggal {
-        top: 16px;
-        right: 20px;
+        font-size: 28px;
+    }
+
+
+    .header-content p {
+
+        font-size: 12px;
+    }
+
+
+    .form-group input,
+    .form-group select {
+
+        height: 48px;
 
         font-size: 13px;
     }
 
 
-    /* FORM */
-
-    .form-control {
-        gap: 15px;
-    }
-
-    .form-group {
-        gap: 7px;
-    }
-
-
-    /* LABEL */
-
-    .form-group label {
-        font-size: 13px;
-    }
-
-
-    /* INPUT */
-
-    .form-group input {
-        height: 42px;
-
-        padding: 9px 12px;
+    .form-group textarea {
 
         font-size: 13px;
+
+        min-height: 150px;
     }
 
-
-    /* SECTION */
-
-    .section {
-        margin-top: 18px;
-    }
-
-    .section-title {
-        margin-bottom: 7px;
-
-        font-size: 13px;
-    }
-
-
-    /* TEXTAREA */
-
-    .textarea textarea {
-        min-height: 105px;
-
-        padding: 11px 12px;
-
-        font-size: 13px;
-        line-height: 19px;
-    }
-
-
-    /* BUTTON */
-
-    .btn-simpan {
-        width: 95%;
-        height: 44px;
-
-        font-size: 16px;
-    }
 }
 
 
-/* =========================
-   DESKTOP
-========================= */
+/* =========================================
+   MOBILE
+========================================= */
 
-@media (min-width: 900px) {
-
-    body {
-        background: #f3f5f7;
-    }
-
-
-    /* CONTAINER */
+@media (max-width: 500px) {
 
     .container {
-        max-width: 600px;
 
-        padding-top: 50px;
-        padding-bottom: 50px;
+        padding: 18px 11px 35px;
     }
 
 
-    /* FOTO */
+    .form-header {
 
-    .foto-container {
-        width: 210px;
-        height: 140px;
-
-        margin-bottom: 20px;
+        margin-bottom: 14px;
     }
 
 
-    /* CARD */
+    .btn-kembali {
+
+        font-size: 11px;
+
+        margin-bottom: 14px;
+    }
+
+
+    .header-content {
+
+        gap: 10px;
+    }
+
+
+    .header-icon {
+
+        width: 42px;
+
+        height: 42px;
+
+        border-radius: 10px;
+
+        font-size: 18px;
+    }
+
+
+    .header-content h1 {
+
+        font-size: 20px;
+    }
+
+
+    .header-content p {
+
+        font-size: 10px;
+    }
+
 
     .card {
-        padding: 55px 25px 25px;
 
-        border-radius: 12px;
+        padding: 17px;
 
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 13px;
     }
 
 
-    /* TANGGAL */
+    .form-info {
 
-    .tanggal {
-        top: 18px;
-        right: 25px;
+        padding: 10px;
+
+        margin-bottom: 21px;
+    }
+
+
+    .section-heading {
+
+        gap: 9px;
+    }
+
+
+    .section-number {
+
+        width: 29px;
+
+        height: 29px;
+
+        font-size: 9px;
+    }
+
+
+    .section-heading h2 {
 
         font-size: 14px;
     }
 
 
-    /* FORM */
+    .section-heading p {
 
-    .form-control {
-        gap: 17px;
+        font-size: 9px;
     }
+
 
     .form-group {
-        gap: 8px;
+
+        margin-bottom: 14px;
     }
 
 
-    /* LABEL */
+    .form-group input,
+    .form-group select {
 
-    .form-group label {
-        font-size: 14px;
-    }
-
-
-    /* INPUT */
-
-    .form-group input {
         height: 44px;
 
-        padding: 10px 13px;
+        font-size: 11px;
 
-        font-size: 14px;
+        border-radius: 8px;
     }
 
 
-    /* SECTION */
+    .form-group textarea {
 
-    .section {
-        margin-top: 20px;
-    }
+        min-height: 125px;
 
-    .section-title {
-        margin-bottom: 8px;
+        font-size: 11px;
 
-        font-size: 14px;
+        border-radius: 8px;
     }
 
 
-    /* TEXTAREA */
+    .form-footer {
 
-    .textarea textarea {
-        min-height: 115px;
+        flex-direction: column-reverse;
 
-        padding: 12px 13px;
-
-        font-size: 14px;
-        line-height: 20px;
+        align-items: stretch;
     }
 
 
-    /* BUTTON */
-.btn-simpan {
-    width: 95%;
-    height: 48px;
+    .btn-batal,
+    .btn-simpan {
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        width: 100%;
 
-    margin: 20px auto 0;
+        height: 45px;
+    }
 
-    text-align: center;
 
-    font-size: 18px;
-}
+    .required-info {
+
+        text-align: left;
+    }
+
 }

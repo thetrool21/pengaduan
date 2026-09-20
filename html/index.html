@@ -20,32 +20,19 @@
 
         <div class="header">
 
-            <div class="header-top">
+           <div class="header-top">
 
-                <div class="header-title">
+    <div class="header-title">
+        <h1>Daftar Pengaduan</h1>
+        <p>Daftar laporan pengaduan yang telah dibuat</p>
+    </div>
 
-                    <h1>
-                        Daftar Pengaduan
-                    </h1>
+    <a href="Tambah.html" class="btn-tambah">
+        <span class="plus">+</span>
+        Tambah
+    </a>
 
-                    <p>
-                        Daftar laporan pengaduan yang telah dibuat
-                    </p>
-
-                </div>
-
-
-                <!-- TOMBOL TAMBAH -->
-
-                <a
-                    href="Tambah.html"
-                    class="btn-tambah"
-                >
-                    <span class="plus">+</span>
-                    <span>Tambah</span>
-                </a>
-
-            </div>
+    </div>
 
         </div>
 
@@ -74,345 +61,200 @@
          FIREBASE
     ========================== -->
 
-    <script type="module">
+   <script type="module">
+    import { db } from "../js/firebase-config.js";
 
-        import { db } from "../js/firebase-config.js";
+    import {
+        collection,
+        query,
+        orderBy,
+        onSnapshot
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
-        import {
-            collection,
-            onSnapshot
-        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    const daftarPengaduan = document.querySelector(".pengaduan-list");
 
+    const pengaduanRef = collection(db, "pengaduan");
 
-        // =========================
-        // ELEMENT
-        // =========================
+    // Terbaru → terlama
+    const pengaduanQuery = query(
+        pengaduanRef,
+        orderBy("createdAt", "desc")
+    );
 
-        const daftarPengaduan =
-            document.getElementById("pengaduan-list");
+    onSnapshot(
+        pengaduanQuery,
+        (snapshot) => {
 
+            daftarPengaduan.innerHTML = "";
 
-        // =========================
-        // COLLECTION FIRESTORE
-        // =========================
-
-        const pengaduanRef =
-            collection(db, "pengaduan");
-
-
-        // =========================
-        // FUNGSI ESCAPE HTML
-        // =========================
-
-        function escapeHTML(value) {
-
-            if (value === null || value === undefined) {
-                return "";
+            if (snapshot.empty) {
+                daftarPengaduan.innerHTML = `
+                    <div class="tidak-ada-data">
+                        <div class="empty-icon">📭</div>
+                        <h3>Belum Ada Pengaduan</h3>
+                        <p>
+                            Belum ada laporan yang dibuat.
+                        </p>
+                    </div>
+                `;
+                return;
             }
 
-            return String(value)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
+            snapshot.forEach((doc, index) => {
 
-
-        // =========================
-        // FORMAT TANGGAL
-        // =========================
-
-        function formatTanggal(timestamp) {
-
-            if (!timestamp) {
-                return "Tanggal belum tersedia";
-            }
-
-            try {
-
-                return timestamp
-                    .toDate()
-                    .toLocaleDateString(
-                        "id-ID",
-                        {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric"
-                        }
-                    );
-
-            } catch (error) {
-
-                console.error(
-                    "Gagal memformat tanggal:",
-                    error
-                );
-
-                return "Tanggal tidak valid";
-            }
-        }
-
-
-        // =========================
-        // CLASS KATEGORI
-        // =========================
-
-        function getClassKategori(jenisLaporan) {
-
-            switch (jenisLaporan) {
-
-                case "Pencurian":
-                    return "pencurian";
-
-                case "Kerusakan Fasilitas":
-                    return "kerusakan";
-
-                case "Orang Tidak Dikenal":
-                    return "asing";
-
-                default:
-                    return "";
-            }
-        }
-
-
-        // =========================
-        // TAMPILKAN DATA
-        // =========================
-
-        onSnapshot(
-
-            pengaduanRef,
-
-            (snapshot) => {
-
-                console.log(
-                    "Jumlah pengaduan:",
-                    snapshot.size
-                );
-
-
-                // Bersihkan loading / data lama
-
-                daftarPengaduan.innerHTML = "";
-
+                const data = doc.data();
+                const id = doc.id;
 
                 // =========================
-                // BELUM ADA DATA
+                // TANGGAL
                 // =========================
+                let tanggal = "Tanggal tidak tersedia";
 
-                if (snapshot.empty) {
-
-                    daftarPengaduan.innerHTML = `
-                        <div class="tidak-ada-data">
-                            Belum ada pengaduan.
-                        </div>
-                    `;
-
-                    return;
+                if (data.createdAt) {
+                    try {
+                        tanggal = data.createdAt
+                            .toDate()
+                            .toLocaleDateString("id-ID", {
+                                day: "numeric",
+                                month: "long",
+                                year: "numeric"
+                            });
+                    } catch (error) {
+                        tanggal = "Tanggal tidak tersedia";
+                    }
                 }
 
+                // =========================
+                // KATEGORI
+                // =========================
+                let classKategori = "asing";
+
+                if (data.jenisLaporan === "Pencurian") {
+                    classKategori = "pencurian";
+                } else if (
+                    data.jenisLaporan === "Kerusakan Fasilitas"
+                ) {
+                    classKategori = "kerusakan";
+                }
 
                 // =========================
-                // TAMPILKAN SETIAP DOCUMENT
+                // STATUS
                 // =========================
+                const status = data.status || "Menunggu Konfirmasi";
 
-                snapshot.forEach((docSnapshot) => {
+                let statusClass = "menunggu";
+                let statusIcon = "⏳";
 
-                    const data =
-                        docSnapshot.data();
+                if (status === "Sedang Diproses") {
+                    statusClass = "diproses";
+                    statusIcon = "🔄";
+                }
 
-                    const id =
-                        docSnapshot.id;
+                if (status === "Selesai") {
+                    statusClass = "selesai";
+                    statusIcon = "✓";
+                }
 
+                if (status === "Ditutup") {
+                    statusClass = "ditutup";
+                    statusIcon = "🔒";
+                }
 
-                    // Data
+                // =========================
+                // FOTO
+                // =========================
+                const foto =
+                    data.fotoUrl ||
+                    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800";
 
-                    const namaPelapor =
-                        escapeHTML(
-                            data.namaPelapor || "-"
-                        );
+                // =========================
+                // CARD
+                // =========================
+                const card = document.createElement("article");
 
-                    const nomorRumah =
-                        escapeHTML(
-                            data.nomorRumah || "-"
-                        );
+                card.className = "pengaduan-card";
 
-                    const flat =
-                        escapeHTML(
-                            data.flat || "-"
-                        );
+                card.innerHTML = `
 
-                    const judulLaporan =
-                        escapeHTML(
-                            data.judulLaporan || "-"
-                        );
+                    <div class="pengaduan-image">
 
-                    const jenisLaporan =
-                        escapeHTML(
-                            data.jenisLaporan || "-"
-                        );
+                        <img
+                            src="${foto}"
+                            alt="${data.jenisLaporan || "Pengaduan"}"
+                        >
 
-                    const deskripsi =
-                        escapeHTML(
-                            data.deskripsi || "-"
-                        );
+                        <span class="status-badge ${statusClass}">
+                            <span>${statusIcon}</span>
+                            ${status}
+                        </span>
 
-
-                    // Status
-
-                    const status =
-                        escapeHTML(
-                            data.status || "Menunggu"
-                        );
-
-
-                    // Tanggal
-
-                    const tanggal =
-                        formatTanggal(
-                            data.createdAt || data.tanggal
-                        );
+                    </div>
 
 
-                    // Class kategori
+                    <div class="pengaduan-content">
 
-                    const classKategori =
-                        getClassKategori(
-                            data.jenisLaporan
-                        );
+                        <div class="pengaduan-top">
 
+                            <span class="kategori ${classKategori}">
+                                ${data.jenisLaporan || "Pengaduan"}
+                            </span>
 
-                    // Foto
-
-                    const foto =
-                        data.fotoUrl ||
-                        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800";
-
-
-                    // =========================
-                    // BUAT CARD
-                    // =========================
-
-                    const card =
-                        document.createElement("div");
-
-                    card.className =
-                        "pengaduan-card";
-
-
-                    card.innerHTML = `
-
-                        <div class="pengaduan-image">
-
-                            <img
-                                src="${escapeHTML(foto)}"
-                                alt="${jenisLaporan}"
-                                loading="lazy"
-                            >
+                            <span class="tanggal">
+                                ${tanggal}
+                            </span>
 
                         </div>
 
 
-                        <div class="pengaduan-content">
-
-                            <div class="pengaduan-top">
-
-                                <span
-                                    class="kategori ${classKategori}"
-                                >
-                                    ${jenisLaporan}
-                                </span>
+                        <h2>
+                            ${data.judulLaporan || "Tanpa Judul"}
+                        </h2>
 
 
-                                <span class="tanggal">
-                                    ${tanggal}
-                                </span>
+                        <div class="card-footer">
 
-                            </div>
-
-
-                            <h2>
-                                ${judulLaporan}
-                            </h2>
-
-
-                            <p>
-                                ${deskripsi}
-                            </p>
-
-
-                            <div class="pengaduan-info">
-
-                                <span>
-                                    Rumah ${nomorRumah}
-                                </span>
-
-                                <span>
-                                    Flat ${flat}
-                                </span>
-
-                                <span>
-                                    ${status}
-                                </span>
-
+                            <div class="report-info">
+                                <span>👤</span>
+                                ${data.namaPelapor || "Anonim"}
                             </div>
 
 
                             <a
-                                href="detail.html?id=${encodeURIComponent(id)}"
+                                href="detail.html?id=${id}"
                                 class="btn-detail"
                             >
                                 Lihat Detail
+                                <span>→</span>
                             </a>
 
                         </div>
 
-                    `;
-
-
-                    daftarPengaduan.appendChild(card);
-
-                });
-
-            },
-
-
-            // =========================
-            // ERROR FIRESTORE
-            // =========================
-
-            (error) => {
-
-                console.error(
-                    "Gagal mengambil data Firestore:",
-                    error
-                );
-
-
-                daftarPengaduan.innerHTML = `
-
-                    <div class="tidak-ada-data">
-
-                        Gagal mengambil data pengaduan.
-
-                        <br><br>
-
-                        <small>
-                            ${escapeHTML(error.message)}
-                        </small>
-
                     </div>
-
                 `;
 
-            }
+                daftarPengaduan.appendChild(card);
+            });
+        },
 
-        );
+        (error) => {
 
-    </script>
+            console.error(
+                "Gagal mengambil pengaduan:",
+                error
+            );
 
+            daftarPengaduan.innerHTML = `
+                <div class="tidak-ada-data error">
+                    <div class="empty-icon">⚠️</div>
+                    <h3>Gagal Memuat Laporan</h3>
+                    <p>
+                        Silakan periksa koneksi atau konfigurasi Firebase.
+                    </p>
+                </div>
+            `;
+        }
+    );
+</script>
 </body>
 
 </html>

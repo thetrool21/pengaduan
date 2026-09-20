@@ -2,264 +2,759 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Detail Pengaduan</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Tambah Pengaduan</title>
 
     <link rel="stylesheet" href="../css/Tambah.css">
+
 </head>
+
 
 <body>
 
     <div class="container">
 
-        <!-- FOTO PENGADUAN -->
-        <div class="foto-container">
-            <img 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO5ZsdcHzHpnyDjvWvqzGWSOkQyJrextqO1anoaSqg57iLEnkxY1HvcClZ&s=10"
-                alt="Foto maling motor"
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <div class="form-header">
+
+            <a
+                href="index.html"
+                class="btn-kembali"
             >
+                ← Kembali
+            </a>
+
+
+            <div class="header-content">
+
+                <div class="header-icon">
+                    📢
+                </div>
+
+                <div>
+
+                    <h1>
+                        Buat Pengaduan
+                    </h1>
+
+                    <p>
+                        Sampaikan laporan atau permasalahan
+                        yang terjadi di lingkungan.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
 
 
-        <!-- KARTU PENGADUAN -->
+        <!-- =========================
+             FORM CARD
+        ========================== -->
+
         <div class="card">
 
-            <!-- TANGGAL -->
-            <div class="tanggal">
-                12 November 2026
+
+            <!-- INFO -->
+
+            <div class="form-info">
+
+                <div class="info-icon">
+                    ℹ
+                </div>
+
+                <div>
+
+                    <strong>
+                        Isi data dengan lengkap
+                    </strong>
+
+                    <p>
+                        Pastikan informasi yang kamu masukkan
+                        sesuai dengan kondisi sebenarnya.
+                    </p>
+
+                </div>
+
             </div>
 
 
-<!-- DATA PENGADUAN -->
-<div class="form-control">
+            <!-- =========================
+                 DATA PELAPOR
+            ========================== -->
 
-    <!-- NAMA PELAPOR -->
-    <div class="form-group">
-        <label for="nama_pelapor">Nama Pelapor</label>
-        <input
-            type="text"
-            id="nama_pelapor"
-            name="nama_pelapor"
-            placeholder="Masukkan nama pelapor"
-        >
-    </div>
+            <div class="form-section">
 
-    <!-- NOMOR RUMAH -->
-    <div class="form-group">
-        <label for="nomor">No. Rumah</label>
-        <input
-            type="number"
-            id="nomor"
-            name="nomor"
-            placeholder="Masukkan nomor rumah"
-        >
-    </div>
+                <div class="section-heading">
 
-    <!-- FLAT -->
-    <div class="form-group">
-        <label for="flat">Flat</label>
-        <input
-            type="text"
-            id="flat"
-            name="flat"
-            placeholder="Masukkan nama / nomor flat"
-        >
-    </div>
+                    <span class="section-number">
+                        01
+                    </span>
 
-    <!-- JUDUL LAPORAN -->
-    <div class="form-group">
-        <label for="judul_laporan">Judul Laporan</label>
-        <input
-            type="text"
-            id="judul_laporan"
-            name="judul_laporan"
-            placeholder="Masukkan judul laporan"
-        >
-    </div>
-    <!-- JENIS LAPORAN -->
-    <div class="form-group">
-        <label for="jenis_laporan">Jenis Laporan</label>
-        <select id="jenis_laporan" name="jenis_laporan">
-            <option value="">Pilih Jenis Laporan</option>
-            <option value="Pencurian">Pencurian</option>
-            <option value="Kerusakan Fasilitas">Kerusakan Fasilitas</option>
-            <option value="Orang Tidak Dikenal">Orang Tidak Dikenal</option>
-        </select>
-    </div>
-</div>
+                    <div>
 
+                        <h2>
+                            Data Pelapor
+                        </h2>
 
+                        <p>
+                            Informasi mengenai orang yang membuat laporan.
+                        </p>
 
-            <!-- DESKRIPSI -->
-            <div class="section">
+                    </div>
 
-                <div class="section-title">
-                    Deskripsi Pengaduan
                 </div>
 
-                <div class="textarea">
+
+                <!-- NAMA -->
+
+                <div class="form-group">
+
+                    <label for="nama_pelapor">
+                        Nama Pelapor
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nama_pelapor"
+                        name="nama_pelapor"
+                        placeholder="Masukkan nama lengkap"
+                        autocomplete="name"
+                    >
+
+                </div>
+
+
+                <!-- NOMOR RUMAH -->
+
+                <div class="form-group">
+
+                    <label for="nomor">
+                        No. Rumah
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="number"
+                        id="nomor"
+                        name="nomor"
+                        placeholder="Contoh: 24"
+                        inputmode="numeric"
+                    >
+
+                </div>
+
+
+                <!-- FLAT -->
+
+                <div class="form-group">
+
+                    <label for="flat">
+                        Flat
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="flat"
+                        name="flat"
+                        placeholder="Contoh: Blok A"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 INFORMASI LAPORAN
+            ========================== -->
+
+            <div class="form-section">
+
+                <div class="section-heading">
+
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Informasi Laporan
+                        </h2>
+
+                        <p>
+                            Jelaskan jenis dan pokok permasalahan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- JUDUL -->
+
+                <div class="form-group">
+
+                    <label for="judul_laporan">
+                        Judul Laporan
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="judul_laporan"
+                        name="judul_laporan"
+                        placeholder="Contoh: Lampu koridor rusak"
+                    >
+
+                </div>
+
+
+                <!-- JENIS -->
+
+                <div class="form-group">
+
+                    <label for="jenis_laporan">
+                        Jenis Laporan
+                        <span>*</span>
+                    </label>
+
+                    <div class="select-wrapper">
+
+                        <select
+                            id="jenis_laporan"
+                            name="jenis_laporan"
+                        >
+
+                            <option value="">
+                                Pilih jenis laporan
+                            </option>
+
+                            <option value="Pencurian">
+                                Pencurian
+                            </option>
+
+                            <option value="Kerusakan Fasilitas">
+                                Kerusakan Fasilitas
+                            </option>
+
+                            <option value="Orang Tidak Dikenal">
+                                Orang Tidak Dikenal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 DESKRIPSI
+            ========================== -->
+
+            <div class="form-section">
+
+                <div class="section-heading">
+
+                    <span class="section-number">
+                        03
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Deskripsi Pengaduan
+                        </h2>
+
+                        <p>
+                            Ceritakan kejadian secara jelas dan singkat.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="deskripsi">
+                        Deskripsi
+                        <span>*</span>
+                    </label>
+
                     <textarea
+                        id="deskripsi"
                         name="deskripsi"
-                        rows="4"
-                        placeholder="Masukkan deskripsi pengaduan..."
+                        rows="6"
+                        placeholder="Tuliskan kronologi atau detail pengaduan di sini..."
                     ></textarea>
+
+                    <div class="textarea-info">
+                        Jelaskan waktu, lokasi, dan kejadian jika diperlukan.
+                    </div>
+
                 </div>
 
             </div>
 
 
-            <!-- a SIMPAN -->
-            <button type="button" class="btn-simpan" id="btn-simpan">
-                Simpan
-            </button>
+            <!-- =========================
+                 TOMBOL
+            ========================== -->
+
+            <div class="form-footer">
+
+                <button
+                    type="button"
+                    id="btn-batal"
+                    class="btn-batal"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    type="button"
+                    id="btn-simpan"
+                    class="btn-simpan"
+                >
+                    <span>
+                        Simpan Pengaduan
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <div class="required-info">
+                <span>*</span>
+                Wajib diisi
+            </div>
+
 
         </div>
 
     </div>
-    <script src="../js/switch.js"></script>
+
+
+    <!-- =========================
+         FIREBASE
+    ========================== -->
+
     <script type="module">
 
-    import { db } from "../js/firebase-config.js";
-
-    import {
-        getFirestore,
-        collection,
-        addDoc,
-        serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-
-    // =========================
-    // TOMBOL SIMPAN
-    // =========================
-
-    const tombolSimpan = document.getElementById("btn-simpan");
+        import {
+            db
+        } from "../js/firebase-config.js";
 
 
-    tombolSimpan.addEventListener("click", async () => {
+        import {
 
-        // Ambil data dari input
+            collection,
+            addDoc,
+            serverTimestamp
+
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+        // ==========================================
+        // ELEMENT
+        // ==========================================
+
+        const btnSimpan =
+            document.getElementById(
+                "btn-simpan"
+            );
+
+
+        const btnBatal =
+            document.getElementById(
+                "btn-batal"
+            );
+
 
         const namaPelapor =
-            document.getElementById("nama_pelapor").value.trim();
+            document.getElementById(
+                "nama_pelapor"
+            );
+
 
         const nomorRumah =
-            document.getElementById("nomor").value.trim();
+            document.getElementById(
+                "nomor"
+            );
+
 
         const flat =
-            document.getElementById("flat").value.trim();
+            document.getElementById(
+                "flat"
+            );
+
 
         const judulLaporan =
-            document.getElementById("judul_laporan").value.trim();
+            document.getElementById(
+                "judul_laporan"
+            );
+
 
         const jenisLaporan =
-            document.getElementById("jenis_laporan").value;
+            document.getElementById(
+                "jenis_laporan"
+            );
+
 
         const deskripsi =
-            document.querySelector("textarea[name='deskripsi']").value.trim();
+            document.getElementById(
+                "deskripsi"
+            );
 
 
-        // =========================
-        // VALIDASI
-        // =========================
+        // ==========================================
+        // SIMPAN
+        // ==========================================
 
-        if (
-            !namaPelapor ||
-            !nomorRumah ||
-            !flat ||
-            !judulLaporan ||
-            !jenisLaporan ||
-            !deskripsi
-        ) {
+        btnSimpan.addEventListener(
+            "click",
+            async () => {
 
-            alert("Mohon lengkapi semua data terlebih dahulu.");
+                // -------------------------------
+                // AMBIL DATA
+                // -------------------------------
 
-            return;
-        }
+                const nama =
+                    namaPelapor.value.trim();
+
+                const nomor =
+                    nomorRumah.value.trim();
+
+                const flatValue =
+                    flat.value.trim();
+
+                const judul =
+                    judulLaporan.value.trim();
+
+                const jenis =
+                    jenisLaporan.value;
+
+                const deskripsiValue =
+                    deskripsi.value.trim();
 
 
-        // =========================
-        // SIMPAN KE FIRESTORE
-        // =========================
+                // -------------------------------
+                // VALIDASI
+                // -------------------------------
 
-        try {
+                if (!nama) {
 
-            tombolSimpan.disabled = true;
+                    alert(
+                        "Nama pelapor wajib diisi."
+                    );
 
-            tombolSimpan.textContent = "Menyimpan...";
+                    namaPelapor.focus();
 
-
-            const docRef = await addDoc(
-                collection(db, "pengaduan"),
-                {
-
-                    namaPelapor: namaPelapor,
-
-                    nomorRumah: nomorRumah,
-
-                    flat: flat,
-
-                    judulLaporan: judulLaporan,
-
-                    jenisLaporan: jenisLaporan,
-
-                    deskripsi: deskripsi,
-
-                    status: "Menunggu",
-
-                    tanggal: serverTimestamp(),
-
-                    createdAt: serverTimestamp()
+                    return;
 
                 }
-            );
 
 
-            // =========================
-            // BERHASIL
-            // =========================
+                if (!nomor) {
 
-            console.log(
-                "Pengaduan berhasil disimpan!",
-                docRef.id
-            );
+                    alert(
+                        "Nomor rumah wajib diisi."
+                    );
 
+                    nomorRumah.focus();
 
-            alert("Pengaduan berhasil dikirim!");
+                    return;
 
-
-            // Pindah halaman setelah berhasil
-
-            window.location.href = `detail.html?id=${docRef.id}`;
+                }
 
 
-        } catch (error) {
+                if (!flatValue) {
 
-            // =========================
-            // ERROR
-            // =========================
+                    alert(
+                        "Flat wajib diisi."
+                    );
 
-            console.error(
-                "Gagal menyimpan pengaduan:",
-                error
-            );
+                    flat.focus();
 
-            alert(
-                "Gagal mengirim pengaduan.\n\n" +
-                error.message
-            );
+                    return;
+
+                }
 
 
-            tombolSimpan.disabled = false;
+                if (!judul) {
 
-            tombolSimpan.textContent = "Simpan";
+                    alert(
+                        "Judul laporan wajib diisi."
+                    );
 
-        }
+                    judulLaporan.focus();
 
-    });
+                    return;
 
-</script>
+                }
+
+
+                if (!jenis) {
+
+                    alert(
+                        "Silakan pilih jenis laporan."
+                    );
+
+                    jenisLaporan.focus();
+
+                    return;
+
+                }
+
+
+                if (!deskripsiValue) {
+
+                    alert(
+                        "Deskripsi pengaduan wajib diisi."
+                    );
+
+                    deskripsi.focus();
+
+                    return;
+
+                }
+
+
+                // -------------------------------
+                // BUTTON LOADING
+                // -------------------------------
+
+                btnSimpan.disabled = true;
+
+                btnSimpan.innerHTML =
+                    "<span>Menyimpan...</span>";
+
+
+                try {
+
+                    // ---------------------------
+                    // ADD DOC
+                    // ---------------------------
+
+                    await addDoc(
+
+                        collection(
+                            db,
+                            "pengaduan"
+                        ),
+
+                        {
+
+                            namaPelapor:
+                                nama,
+
+                            nomorRumah:
+                                nomor,
+
+                            flat:
+                                flatValue,
+
+                            judulLaporan:
+                                judul,
+
+                            jenisLaporan:
+                                jenis,
+
+                            deskripsi:
+                                deskripsiValue,
+
+                            status:
+                                "Menunggu Konfirmasi",
+
+                            tindakanPetugas:
+                                "",
+
+                            fotoUrl:
+                                "",
+
+                            createdAt:
+                                serverTimestamp(),
+
+                            updatedAt:
+                                serverTimestamp(),
+
+                            confirmedAt:
+                                null,
+
+                            selesaiAt:
+                                null,
+
+                            ditutupAt:
+                                null
+
+                        }
+
+                    );
+
+
+                    // ---------------------------
+                    // BERHASIL
+                    // ---------------------------
+
+                    alert(
+                        "Pengaduan berhasil dikirim."
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Gagal menyimpan:",
+                        error
+                    );
+
+
+                    alert(
+                        "Pengaduan gagal disimpan.\n\n" +
+                        error.message
+                    );
+
+
+                    btnSimpan.disabled =
+                        false;
+
+                    btnSimpan.innerHTML = `
+
+                        <span>
+                            Simpan Pengaduan
+                        </span>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    `;
+
+                }
+
+            }
+        );
+
+
+        // ==========================================
+        // BATAL
+        // ==========================================
+
+        btnBatal.addEventListener(
+            "click",
+            () => {
+
+                const yakin =
+                    confirm(
+                        "Batalkan pengisian pengaduan?"
+                    );
+
+
+                if (yakin) {
+
+                    window.location.href =
+                        "index.html";
+
+                }
+
+            }
+        );
+
+
+        // ==========================================
+        // ENTER → NEXT INPUT
+        // ==========================================
+
+        const fields = [
+
+            namaPelapor,
+            nomorRumah,
+            flat,
+            judulLaporan,
+            jenisLaporan,
+            deskripsi
+
+        ];
+
+
+        fields.forEach(
+            (field, index) => {
+
+                field.addEventListener(
+                    "keydown",
+                    (event) => {
+
+                        if (
+                            event.key ===
+                            "Enter"
+                        ) {
+
+                            // textarea tetap menggunakan
+                            // Enter untuk membuat baris baru
+
+                            if (
+                                field.tagName ===
+                                "TEXTAREA"
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            event.preventDefault();
+
+
+                            const next =
+                                fields[index + 1];
+
+
+                            if (next) {
+
+                                next.focus();
+
+                            }
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
 </body>
 
 </html>

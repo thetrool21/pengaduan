@@ -1,627 +1,598 @@
-/* =========================
-   RESET
-========================= */
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
-
-/* =========================
-   BODY
-========================= */
 
 body {
-    min-height: 100vh;
-
     font-family: Arial, Helvetica, sans-serif;
+    background:
+        linear-gradient(
+            180deg,
+            #f4f8fb 0%,
+            #eef3f7 100%
+        );
 
-    background: #ffffff;
     color: #173c5b;
+    min-height: 100vh;
 }
 
 
-/* =========================
-   CONTAINER
-========================= */
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
 
 .container {
-    width: 100%;
-    max-width: 600px;
-
+    width: 92%;
+    max-width: 1050px;
     margin: 0 auto;
-
-    padding: 25px 14px;
+    padding: 35px 0 50px;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* ============================= */
+/* HEADER */
+/* ============================= */
 
 .header {
-    width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
 }
-
-
-/* =========================
-   HEADER TOP
-========================= */
 
 .header-top {
-    width: 100%;
-
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
+    gap: 20px;
 
-    gap: 15px;
-}
+    background: #ffffff;
 
+    padding: 24px 28px;
 
-/* =========================
-   HEADER TITLE
-========================= */
+    border: 1px solid #e1e9ef;
+    border-radius: 18px;
 
-.header-title {
-    flex: 1;
-    min-width: 0;
+    box-shadow:
+        0 8px 30px rgba(23, 60, 91, 0.07);
 }
 
 .header-title h1 {
-    color: #173c5b;
-
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 700;
+    color: #073b63;
 
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .header-title p {
-    color: #7891a5;
-
-    font-size: 11px;
-    line-height: 16px;
+    font-size: 14px;
+    color: #71808d;
 }
 
 
-/* =========================
-   BUTTON TAMBAH
-========================= */
+/* ============================= */
+/* BUTTON SIMPAN */
+/* ============================= */
 
-.btn-tambah {
-    flex-shrink: 0;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 5px;
-
-    min-height: 34px;
-
-    padding: 7px 10px;
-
-    border-radius: 6px;
+.btn-simpan {
+    border: none;
 
     background: #073b63;
-    color: #ffffff;
+    color: white;
 
-    font-size: 10px;
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
     font-weight: 600;
 
-    text-decoration: none;
+    cursor: pointer;
 
-    white-space: nowrap;
+    transition: 0.25s ease;
+}
 
-    transition:
-        background 0.2s ease,
-        transform 0.15s ease;
+.btn-simpan:hover {
+    background: #0b527f;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(7, 59, 99, 0.2);
 }
 
 
-/* =========================
-   ICON PLUS
-========================= */
-
-.btn-tambah .plus {
-    font-size: 16px;
-    font-weight: 400;
-
-    line-height: 1;
-}
-
-
-/* =========================
-   HOVER
-========================= */
-
-.btn-tambah:hover {
-    background: #0a4d80;
-}
-
-
-/* =========================
-   ACTIVE
-========================= */
-
-.btn-tambah:active {
-    transform: scale(0.97);
-}
-
-
-/* =========================
-   TABLET
-========================= */
-
-@media (min-width: 600px) {
-
-    .header {
-        margin-bottom: 24px;
-    }
-
-    .header-title h1 {
-        font-size: 24px;
-    }
-
-    .header-title p {
-        font-size: 13px;
-        line-height: 19px;
-    }
-
-    .btn-tambah {
-        min-height: 40px;
-
-        padding: 8px 13px;
-
-        border-radius: 7px;
-
-        font-size: 12px;
-    }
-
-    .btn-tambah .plus {
-        font-size: 19px;
-    }
-}
-
-
-/* =========================
-   DESKTOP
-========================= */
-
-@media (min-width: 900px) {
-
-    .header-title h1 {
-        font-size: 27px;
-    }
-
-    .header-title p {
-        font-size: 14px;
-    }
-
-    .btn-tambah {
-        min-height: 44px;
-
-        padding: 9px 15px;
-
-        border-radius: 7px;
-
-        font-size: 13px;
-    }
-
-    .btn-tambah .plus {
-        font-size: 21px;
-    }
-}
-
-
-/* =========================
-   LIST
-========================= */
+/* ============================= */
+/* LIST */
+/* ============================= */
 
 .pengaduan-list {
     display: flex;
     flex-direction: column;
-
-    gap: 13px;
+    gap: 18px;
 }
 
 
-/* =========================
-   CARD
-========================= */
+/* ============================= */
+/* CARD */
+/* ============================= */
 
 .pengaduan-card {
-    width: 100%;
+    position: relative;
 
-    display: flex;
-
-    padding: 10px;
-
-    background: #eef1f5;
-
-    border-radius: 10px;
-
-    gap: 12px;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-/* =========================
-   IMAGE
-========================= */
-
-.pengaduan-image {
-    flex: 0 0 105px;
-
-    width: 105px;
-    height: 105px;
+    display: grid;
+    grid-template-columns: 190px 1fr;
 
     overflow: hidden;
 
-    border-radius: 7px;
+    background: #ffffff;
+
+    border: 1px solid #e1e9ef;
+    border-radius: 17px;
+
+    box-shadow:
+        0 5px 22px rgba(23, 60, 91, 0.06);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.pengaduan-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #c9dbe7;
+
+    box-shadow:
+        0 12px 30px rgba(23, 60, 91, 0.11);
+}
+
+
+/* ============================= */
+/* NOMOR CARD */
+/* ============================= */
+
+
+/* ============================= */
+/* IMAGE */
+/* ============================= */
+
+.pengaduan-image {
+    position: relative;
+
+    width: 100%;
+    min-height: 175px;
+
+    overflow: hidden;
+
+    background: #e9eef2;
 }
 
 .pengaduan-image img {
     width: 100%;
     height: 100%;
 
-    display: block;
+    min-height: 175px;
 
     object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.pengaduan-card:hover
+.pengaduan-image img {
+    transform: scale(1.05);
 }
 
 
-/* =========================
-   CONTENT
-========================= */
+/* ============================= */
+/* STATUS */
+/* ============================= */
+
+.status-badge {
+    position: absolute;
+
+    right: 10px;
+    bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    backdrop-filter: blur(8px);
+}
+
+.status-badge.menunggu {
+    background: rgba(255, 243, 205, 0.95);
+    color: #856404;
+}
+
+.status-badge.diproses {
+    background: rgba(207, 226, 255, 0.95);
+    color: #084298;
+}
+
+.status-badge.selesai {
+    background: rgba(209, 231, 221, 0.95);
+    color: #146c43;
+}
+
+.status-badge.ditutup {
+    background: rgba(226, 227, 229, 0.95);
+    color: #41464b;
+}
+
+
+/* ============================= */
+/* CONTENT */
+/* ============================= */
 
 .pengaduan-content {
-    min-width: 0;
-    flex: 1;
+    padding: 23px 24px;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 
-/* =========================
-   TOP
-========================= */
+/* ============================= */
+/* TOP */
+/* ============================= */
 
 .pengaduan-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    gap: 8px;
+    gap: 12px;
 
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 }
 
 
-/* =========================
-   KATEGORI
-========================= */
+/* ============================= */
+/* KATEGORI */
+/* ============================= */
 
 .kategori {
     display: inline-flex;
     align-items: center;
 
-    width: fit-content;
+    padding: 6px 10px;
 
-    padding: 4px 7px;
+    border-radius: 7px;
 
-    border-radius: 5px;
-
-    font-size: 9px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 700;
 }
-
-
-/* PENCURIAN */
 
 .kategori.pencurian {
-    background: #f7d9dd;
-    color: #a83d4b;
+    background: #fdecec;
+    color: #b42318;
 }
-
-
-/* KERUSAKAN */
 
 .kategori.kerusakan {
-    background: #f8e5c8;
-    color: #9a641e;
+    background: #fff4df;
+    color: #9a6700;
 }
-
-
-/* ORANG ASING */
 
 .kategori.asing {
-    background: #d9e8f4;
-    color: #285d83;
+    background: #e9f2ff;
+    color: #175cd3;
 }
 
 
-/* =========================
-   TANGGAL
-========================= */
+/* ============================= */
+/* TANGGAL */
+/* ============================= */
 
-.pengaduan-top .tanggal {
-    position: static;
+.tanggal {
+    color: #84919c;
 
-    color: #c85c67;
-
-    font-size: 9px;
-    font-weight: 600;
+    font-size: 12px;
 
     white-space: nowrap;
 }
 
 
-/* =========================
-   JUDUL
-========================= */
+/* ============================= */
+/* JUDUL */
+/* ============================= */
 
 .pengaduan-content h2 {
     color: #173c5b;
 
-    font-size: 13px;
-    font-weight: 700;
-
-    line-height: 18px;
-
-    margin-bottom: 3px;
-}
-
-
-/* =========================
-   DESKRIPSI
-========================= */
-
-.pengaduan-content p {
-    color: #607789;
-
-    font-size: 10px;
-    line-height: 15px;
+    font-size: 20px;
+    line-height: 1.3;
 
     margin-bottom: 8px;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-
-    overflow: hidden;
 }
 
 
-/* =========================
-   BUTTON
-========================= */
+/* ============================= */
+/* DESKRIPSI */
+/* ============================= */
+
+
+/* ============================= */
+/* FOOTER CARD */
+/* ============================= */
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 13px;
+
+    border-top: 1px solid #edf1f4;
+}
+
+
+/* ============================= */
+/* REPORTER */
+/* ============================= */
+
+.report-info {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #71808d;
+
+    font-size: 12px;
+}
+
+
+/* ============================= */
+/* DETAIL BUTTON */
+/* ============================= */
+
+/* ============================= */
+/* BUTTON LIHAT DETAIL */
+/* ============================= */
 
 .btn-detail {
-    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 
-    padding: 6px 10px;
+    min-width: 135px;
+    height: 40px;
 
-    margin-top: auto;
-
-    border: none;
-    border-radius: 5px;
+    padding: 0 15px;
 
     background: #073b63;
     color: #ffffff;
 
-    font-family: inherit;
+    border: 1px solid #073b63;
+    border-radius: 9px;
 
-    font-size: 9px;
-    font-weight: 600;
+    text-decoration: none;
 
-    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
 
-    transition:
-        background 0.2s ease,
-        transform 0.15s ease;
+    transition: all 0.25s ease;
+}
+
+.btn-detail span {
+    font-size: 16px;
+    line-height: 1;
+
+    transition: transform 0.2s ease;
 }
 
 .btn-detail:hover {
-    background: #0a4d80;
+    background: #0b527f;
+    border-color: #0b527f;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(7, 59, 99, 0.18);
+}
+
+.btn-detail:hover span {
+    transform: translateX(4px);
 }
 
 .btn-detail:active {
-    transform: scale(0.97);
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ============================= */
+/* EMPTY STATE */
+/* ============================= */
+
+.tidak-ada-data {
+    background: white;
+
+    border: 1px solid #e1e9ef;
+    border-radius: 17px;
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 22px rgba(23, 60, 91, 0.05);
+}
+
+.empty-icon {
+    font-size: 42px;
+
+    margin-bottom: 12px;
+}
+
+.tidak-ada-data h3 {
+    color: #173c5b;
+
+    font-size: 18px;
+
+    margin-bottom: 7px;
+}
+
+.tidak-ada-data p {
+    color: #84919c;
+
+    font-size: 13px;
+}
+
+.tidak-ada-data.error h3 {
+    color: #b42318;
 }
 
 
-/* =========================
-   TABLET
-========================= */
+/* ============================= */
+/* TABLET */
+/* ============================= */
 
-@media (min-width: 600px) {
-
-    .container {
-        max-width: 650px;
-
-        padding: 35px 20px;
-    }
-
-
-    .header {
-        margin-bottom: 24px;
-    }
-
-    .header h1 {
-        font-size: 24px;
-    }
-
-    .header p {
-        font-size: 13px;
-        line-height: 19px;
-    }
-
-
-    .pengaduan-list {
-        gap: 16px;
-    }
-
-
-    .pengaduan-card {
-        padding: 13px;
-
-        gap: 15px;
-
-        border-radius: 11px;
-    }
-
-
-    .pengaduan-image {
-        flex-basis: 130px;
-
-        width: 130px;
-        height: 130px;
-
-        border-radius: 8px;
-    }
-
-
-    .pengaduan-top {
-        margin-bottom: 8px;
-    }
-
-
-    .kategori {
-        padding: 5px 8px;
-
-        font-size: 11px;
-    }
-
-
-    .pengaduan-top .tanggal {
-        font-size: 11px;
-    }
-
-
-    .pengaduan-content h2 {
-        font-size: 16px;
-        line-height: 21px;
-
-        margin-bottom: 5px;
-    }
-
-
-    .pengaduan-content p {
-        font-size: 12px;
-        line-height: 18px;
-
-        margin-bottom: 10px;
-    }
-
-
-    .btn-detail {
-        padding: 7px 12px;
-
-        font-size: 11px;
-    }
-}
-
-
-/* =========================
-   DESKTOP
-========================= */
-
-@media (min-width: 900px) {
-
-    body {
-        background: #f3f5f7;
-    }
-
+@media (max-width: 750px) {
 
     .container {
-        max-width: 700px;
-
-        padding-top: 50px;
-        padding-bottom: 50px;
+        width: 94%;
+        padding-top: 22px;
     }
 
-
-    .header h1 {
-        font-size: 27px;
+    .header-top {
+        padding: 20px;
     }
 
-
-    .header p {
-        font-size: 14px;
+    .header-title h1 {
+        font-size: 23px;
     }
-
-
-    .pengaduan-list {
-        gap: 18px;
-    }
-
 
     .pengaduan-card {
-        padding: 15px;
-
-        gap: 18px;
-
-        border-radius: 12px;
-
-        box-shadow:
-            0 5px 18px rgba(0, 0, 0, 0.06);
+        grid-template-columns: 150px 1fr;
     }
 
-
-    .pengaduan-card:hover {
-        transform: translateY(-2px);
-
-        box-shadow:
-            0 8px 22px rgba(0, 0, 0, 0.09);
+    .pengaduan-image,
+    .pengaduan-image img {
+        min-height: 160px;
     }
 
-
-    .pengaduan-image {
-        flex-basis: 150px;
-
-        width: 150px;
-        height: 150px;
-
-        border-radius: 9px;
+    .pengaduan-content {
+        padding: 18px;
     }
-
-
-    .kategori {
-        padding: 6px 9px;
-
-        font-size: 12px;
-    }
-
-
-    .pengaduan-top .tanggal {
-        font-size: 12px;
-    }
-
 
     .pengaduan-content h2 {
         font-size: 18px;
-        line-height: 23px;
+    }
+}
+
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 560px) {
+
+    .container {
+        width: 94%;
+        padding: 15px 0 30px;
     }
 
-
-    .pengaduan-content p {
-        font-size: 13px;
-        line-height: 19px;
+    .header-top {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 18px;
     }
 
+    .btn-tambah {
+        width: 100%;
+    }
+
+    .pengaduan-card {
+        display: block;
+        border-radius: 14px;
+    }
+
+    .pengaduan-image {
+        height: 185px;
+        min-height: 185px;
+    }
+
+    .pengaduan-image img {
+        height: 185px;
+        min-height: 185px;
+    }
+
+    .pengaduan-content {
+        padding: 17px;
+    }
+
+    .card-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
 
     .btn-detail {
-        padding: 8px 14px;
-
-        font-size: 12px;
+        width: 100%;
     }
+}
+/* ============================= */
+/* BUTTON TAMBAH */
+/* ============================= */
+
+.btn-tambah {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-width: 120px;
+    height: 44px;
+
+    padding: 0 18px;
+
+    background: #073b63;
+    color: #ffffff;
+
+    border: 1px solid #073b63;
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.btn-tambah .plus {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.btn-tambah:hover {
+    background: #0b527f;
+    border-color: #0b527f;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(7, 59, 99, 0.20);
+}
+
+.btn-tambah:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
