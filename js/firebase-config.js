@@ -9,25 +9,25 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "xxx",
+    apiKey: "AIzaSyCAJ0o17guqJiRsn7xkZrqdoyQkjb0gTeg",
 
     authDomain:
         "lapor-pak-4a3a3.firebaseapp.com",
 
     projectId:
-        "lapor-pak-xxxx",
+        "lapor-pak-4a3a3",
 
     storageBucket:
-        "lapor-pak-4a3a3.xxxx.app",
+        "lapor-pak-4a3a3.firebasestorage.app",
 
     messagingSenderId:
         "642811097246",
 
     appId:
-        "1:642811097246:web:xxxx",
+        "1:642811097246:web:ae315b877082098d1dcb8f",
 
     measurementId:
-        "G-xxxx"
+        "G-PKCWHF5CC7"
 };
 
 
